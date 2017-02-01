@@ -15,7 +15,6 @@ import java.util.LinkedList;
 /**
  * Created by zGuindouOS on 12/12/2016.
  */
-
 public class BookServlet extends HttpServlet {
 
     private BookDAO bd;
@@ -54,12 +53,9 @@ public class BookServlet extends HttpServlet {
         System.out.println("Catego "+request.getParameter("CategorieBook"));
         System.out.println("Nbr Copies "+Integer.parseInt(request.getParameter("CopierNumberBook")));
         System.out.println("\n\n\n\n\n\n");*/
-
-
-        if(request.getParameter("Delete") != null) {
+        if (request.getParameter("Delete") != null) {
             bd.removeBook(Long.parseLong(request.getParameter("idBook")));
-        }
-        else if(request.getParameter("Update") != null) {
+        } else if (request.getParameter("Update") != null) {
             Book book = new Book(request.getParameter("CodeBook"),
                     request.getParameter("TitreBook"),
                     request.getParameter("AuteurBook"),
@@ -67,8 +63,7 @@ public class BookServlet extends HttpServlet {
                     Integer.parseInt(request.getParameter("NombreCopieBook")),
                     true);
             bd.updateBook(book);
-        }
-        else {
+        } else {
 
             Book book = new Book(request.getParameter("CodeBook"),
                     request.getParameter("TitreBook"),
@@ -78,7 +73,6 @@ public class BookServlet extends HttpServlet {
                     true);
 
             //System.out.println(book.toString());
-
             bd.addBook(book);
         }
 

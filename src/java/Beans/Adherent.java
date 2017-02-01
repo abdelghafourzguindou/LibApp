@@ -9,12 +9,9 @@ package Beans;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.util.logging.Logger;
 
 public class Adherent {
-
-
 
     private int IdAdherent;
     private String CodeAdherent;
@@ -22,6 +19,9 @@ public class Adherent {
     private String NomAdherent;
     private String PrenomAdherent;
     private String ProfessionAdherent;
+    private Boolean etatAdherent;
+    private String Login;
+    private String Passwd;
 
     public Adherent() {
     }
@@ -33,8 +33,6 @@ public class Adherent {
         this.PrenomAdherent = PrenomAdherent;
         this.ProfessionAdherent = ProfessionAdherent;
     }
-
-
 
     public int getIdAdherent() {
         return IdAdherent;
@@ -89,5 +87,28 @@ public class Adherent {
         this.CIN = CIN;
     }
 
+    public void setEtatAdherent(Boolean etatAdherent) {
+        this.etatAdherent = etatAdherent;
+    }
+
+    public void setLogin(String Login) {
+        this.Login = Login;
+    }
+
+    public void setPasswd(String Passwd) {
+        this.Passwd = Passwd;
+    }
+
+    public Boolean getEtatAdherent() {
+        return etatAdherent;
+    }
+
+    public String getLogin() {
+        return Login;
+    }
+
+    public String getPasswd() {
+        return Passwd;
+    }
 
 }

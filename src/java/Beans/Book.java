@@ -1,11 +1,11 @@
 package Beans;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
  * Created by zGuindouOS on 26/12/2016.
-*/
-
+ */
 public class Book {
 
     private Long idBook;
@@ -14,36 +14,37 @@ public class Book {
     private String categorieBook;
     private String auteurBook;
     private int NombreCopieBook;
-    private Boolean EtatBook;
+    private Date dateParution;
+    private Boolean image;
 
     public Book(String codeBook,
-                String titreBook,
-                String categorieBook,
-                String auteurBook,
-                int nombreCopieBook,
-                Boolean EtatBook) {
-        this.codeBook           = codeBook;
-        this.titreBook          = titreBook;
-        this.categorieBook      = categorieBook;
-        this.auteurBook         = auteurBook;
-        this.NombreCopieBook    = nombreCopieBook;
-        this.EtatBook           = EtatBook;
+            String titreBook,
+            String categorieBook,
+            String auteurBook,
+            int nombreCopieBook,
+            Boolean image) {
+        this.codeBook = codeBook;
+        this.titreBook = titreBook;
+        this.categorieBook = categorieBook;
+        this.auteurBook = auteurBook;
+        this.NombreCopieBook = nombreCopieBook;
+        this.image = image;
     }
 
     public Book(Long idBook,
-                String codeBook,
-                String titreBook,
-                String categorieBook,
-                String auteurBook,
-                int nombreCopieBook,
-                Boolean EtatBook) {
-        this.idBook             = idBook;
-        this.codeBook           = codeBook;
-        this.titreBook          = titreBook;
-        this.categorieBook      = categorieBook;
-        this.auteurBook         = auteurBook;
-        this.NombreCopieBook    = nombreCopieBook;
-        this.EtatBook           = EtatBook;
+            String codeBook,
+            String titreBook,
+            String categorieBook,
+            String auteurBook,
+            int nombreCopieBook,
+            Boolean image) {
+        this.idBook = idBook;
+        this.codeBook = codeBook;
+        this.titreBook = titreBook;
+        this.categorieBook = categorieBook;
+        this.auteurBook = auteurBook;
+        this.NombreCopieBook = nombreCopieBook;
+        this.image = image;
     }
 
     public Book() {
@@ -97,8 +98,28 @@ public class Book {
         NombreCopieBook = nombreCopieBook;
     }
 
-    public Boolean getEtatBook() {return EtatBook; }
+    public Boolean getimage() {
+        return image;
+    }
 
-    public void setEtatBook(Boolean etatBook) { EtatBook = etatBook;}
+    public void setimage(Boolean etatBook) {
+        image = etatBook;
+    }
+
+    public void setDateParution(Date dateParution) {
+        this.dateParution = dateParution;
+    }
+
+    public void setImage(Boolean image) {
+        this.image = image;
+    }
+
+    public Date getDateParution() {
+        return dateParution;
+    }
+
+    public Boolean getImage() {
+        return image;
+    }
 
 }

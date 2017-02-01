@@ -37,13 +37,13 @@ public class AuthentificationServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AuthentificationServlet</title>");            
+            out.println("<title>Servlet AuthentificationServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AuthentificationServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
+
             LinkedList listeOfAdherent = DAO.AdherentDAO.Adherentliste();
             request.setAttribute("listeOfAdherent", listeOfAdherent);
             request.getRequestDispatcher("AccueilAdherent.jsp").forward(request, response);

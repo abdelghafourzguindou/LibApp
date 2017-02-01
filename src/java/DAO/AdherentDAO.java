@@ -8,7 +8,6 @@ package DAO;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import Beans.Adherent;
 import DAO.Requests;
 import java.sql.ResultSet;
@@ -18,7 +17,7 @@ import java.util.LinkedList;
 
 public class AdherentDAO {
 
-    public static LinkedList<Adherent> Adherentliste()  {
+    public static LinkedList<Adherent> Adherentliste() {
         LinkedList<Adherent> li_Adh = null;
         try {
             li_Adh = new LinkedList<Adherent>();
@@ -26,8 +25,7 @@ public class AdherentDAO {
             ResultSet res = st.executeQuery(Requests.Adhenrent_all());
             while (res.next()) {
 
-
-                li_Adh.add(new Adherent(res.getString(2),res.getString(3), res.getString(4),  res.getString(5),  res.getString(6)));
+                li_Adh.add(new Adherent(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,17 +41,14 @@ public class AdherentDAO {
             ResultSet res = st.executeQuery(Requests.Adh_CIN(CIN));
             res.next();
 
-            Adh = new Adherent(res.getString(2),res.getString(3), res.getString(4),  res.getString(5),  res.getString(6));
+            Adh = new Adherent(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6));
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             return Adh;
         }
     }
-
 
     public static Adherent Adh_CODE(String CODE) {
         Adherent Adh = new Adherent();
@@ -62,20 +57,16 @@ public class AdherentDAO {
             ResultSet res = st.executeQuery(Requests.Adh_CODE(CODE));
             res.next();
 
-            Adh = new Adherent(res.getString(2),res.getString(3), res.getString(4),  res.getString(5),  res.getString(6));
+            Adh = new Adherent(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6));
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             return Adh;
         }
     }
 
-
-    public static LinkedList<Adherent> Search_By__like_Nom(String Nom)
-    {
+    public static LinkedList<Adherent> Search_By__like_Nom(String Nom) {
         LinkedList<Adherent> li_Adh = null;
         try {
             li_Adh = new LinkedList<Adherent>();
@@ -83,8 +74,7 @@ public class AdherentDAO {
             ResultSet res = st.executeQuery(Requests.Adh_like_Nom(Nom));
             while (res.next()) {
 
-
-                li_Adh.add(new Adherent(res.getString(2),res.getString(3), res.getString(4),  res.getString(5),  res.getString(6)));
+                li_Adh.add(new Adherent(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6)));
             }
 
         } catch (Exception e) {
@@ -94,71 +84,64 @@ public class AdherentDAO {
         }
     }
 
-
-    public static boolean Adh_Add(Adherent Adh )
-    {
+    public static boolean Adh_Add(Adherent Adh) {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             st.executeUpdate(Requests.Adh_Add(Adh));
-            return true ;
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
         }
-
-        catch(Exception e) {  System.out.println(e.getMessage()); return false ; }
     }
 
-    public static boolean Adh_delete_CIN(String CIN)
-    {
+    public static boolean Adh_delete_CIN(String CIN) {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             st.executeUpdate(Requests.Adh_del_CIN(CIN));
-            return true ;
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
         }
-
-        catch(Exception e) {  System.out.println(e.getMessage()); return false ; }
     }
 
-    public static boolean Adh_delete_CODE(String CODE)
-    {
+    public static boolean Adh_delete_CODE(String CODE) {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             st.executeUpdate(Requests.Adh_del_CODE(CODE));
-            return true ;
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
         }
-
-        catch(Exception e) {  System.out.println(e.getMessage()); return false ; }
     }
 
-    public static boolean Update_CIN(Adherent Adh)
-    {
+    public static boolean Update_CIN(Adherent Adh) {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             st.executeUpdate(Requests.Adh_Update_By_CIN(Adh));
-            return true ;
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
         }
 
-        catch(Exception e) {  System.out.println(e.getMessage()); return false ; }
-
     }
 
-    public static void AfficherAdherent(LinkedList<Adherent> li )
-    {
+    public static void AfficherAdherent(LinkedList<Adherent> li) {
 
-        for ( int i=0 ; i < li.size() ; i++)
+        for (int i = 0; i < li.size(); i++) {
             System.out.println(li.get(i));
+        }
     }
 
-    public static void main(String[] arg)
-    {
+    public static void main(String[] arg) {
 
-        for ( int i = 0 ; i <=500 ; i++)
-
-        {
+        for (int i = 0; i <= 500; i++) {
             Adh_Add(new Adherent(new Integer(i).toString(), new Integer(i).toString(), new Integer(i).toString(), new Integer(i).toString(), new Integer(i).toString()));
         }
 
-
-
     }
-
 
 }
