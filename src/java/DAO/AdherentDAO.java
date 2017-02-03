@@ -25,12 +25,14 @@ public class AdherentDAO {
             ResultSet res = st.executeQuery(Requests.Adhenrent_all());
             while (res.next()) {
 
-                li_Adh.add(new Adherent(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6)));
+                li_Adh.add(new Adherent(res.getInt(1),res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getInt(7)));
+                
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             return li_Adh;
+            
         }
     }
 
@@ -39,6 +41,22 @@ public class AdherentDAO {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             ResultSet res = st.executeQuery(Requests.Adh_CIN(CIN));
+            res.next();
+
+            Adh = new Adherent(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return Adh;
+        }
+    }
+    
+      public static Adherent Adh_Id(int Id) {
+        Adherent Adh = new Adherent();
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.Adh_ID(Id));
             res.next();
 
             Adh = new Adherent(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6));

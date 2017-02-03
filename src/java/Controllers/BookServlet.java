@@ -2,6 +2,7 @@ package Controllers;
 
 import Beans.*;
 import DAO.BookDAO;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,11 +18,21 @@ import java.util.LinkedList;
  */
 public class BookServlet extends HttpServlet {
 
-    private BookDAO bd;
+  
 
-    @Override
-    public void init() throws ServletException {
-        bd = new BookDAO();
+    
+    public String toTable( ArrayList<Book> li ) 
+    {
+        
+             String str=  "<table class=\"table table-striped table-bordered table-hover\" id=\"dataTables-example\"><thead><tr><th class=\"center\"></th><th class=\"center\">Titre du livre</th><th class=\"center\">Auteur du livre</th><th class=\"center\">Genre du livre</th><th class=\"center\">Date d'apparution</th><th class=\"center\">Nombre de copies disponibles</th><th colspan=\"2\"><center>Gestion</center></th></tr></thead><div id=\"corpTab\"><tbody>";                               
+             for ( Book bk : li )  
+                str +=  "<tr><td><i class=\"glyphicon glyphicon-book icon_in_button\"></i></td><td>"+bk.getTitreBook()+"</td><td>"+bk.getAuteurBook()+"</td><td>"+bk.getCategorieBook()+"</td><td>"+bk.getDateParution()+"</td><td>"+bk.getNombreCopieBook()+"</td><td><center><a href=\"books?process=modifier&id_book="+bk.getIdBook()+"\" ><input type=\"button\" class=\"modification  btn btn-success\" id=\""+bk.getIdBook()+"\" value=\"Modifier\"></center></td><td></a><center><input type=\"button\" class=\"suppression  btn btn-success\" id=\""+bk.getIdBook()+"\" value=\"Supprimer\"></center></td></tr>"; 
+               
+             str += "</tbody></div></table>";
+             return str;                                         
+                                                        
+                                                        
+                                                  
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -39,47 +50,57 @@ public class BookServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
 
-            ArrayList<Book> Books = bd.getAll();
+            ArrayList<Book> Books = BookDAO.getAll();
             request.setAttribute("model", Books);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
+         String process = request.getParameter("process");
+         System.out.println("Appel servlet"+process);
+         if (process.equalsIgnoreCase("delete"))
+         {
+         
+            BookDAO.removeBook(Long.parseLong(request.getParameter("id_book")));
+            ArrayList<Book> liste = BookDAO.getAll();
+            PrintWriter pr = response.getWriter();
+            pr.print(toTable(liste));
+            
+         }  
+         if (process.equalsIgnoreCase("insert"))
+         {
+             System.out.println(request.getParameter("date"));
+             
 
-        /*System.out.println("\n\n\n\n\nCode "+request.getParameter("CodeBook"));
-        System.out.println("Titre "+request.getParameter("TitreBook"));
-        System.out.println("Auteur "+request.getParameter("AuteurBook"));
-        System.out.println("Catego "+request.getParameter("CategorieBook"));
-        System.out.println("Nbr Copies "+Integer.parseInt(request.getParameter("CopierNumberBook")));
-        System.out.println("\n\n\n\n\n\n");*/
-        if (request.getParameter("Delete") != null) {
-            bd.removeBook(Long.parseLong(request.getParameter("idBook")));
-        } else if (request.getParameter("Update") != null) {
-            Book book = new Book(request.getParameter("CodeBook"),
-                    request.getParameter("TitreBook"),
-                    request.getParameter("AuteurBook"),
-                    request.getParameter("CategorieBook"),
-                    Integer.parseInt(request.getParameter("NombreCopieBook")),
-                    true);
-            bd.updateBook(book);
-        } else {
+            BookDAO.addBook(new Book(request.getParameter("codeBook"),request.getParameter("titreBook"),request.getParameter("categorieBook"), request.getParameter("auteurBook"),Integer.parseInt(request.getParameter("nombreCopieBook")) , request.getParameter("date") ));
+            response.sendRedirect("bookList.jsp");
+         }
+         // Demande de récupérer les info
+         if (process.equalsIgnoreCase("modifier"))
+         {
+             int id_book = Integer.parseInt(request.getParameter("id_book"));
+             Book b = DAO.BookDAO.getBook(id_book);
+             request.setAttribute("book", b);
+             request.getRequestDispatcher("bookEdit.jsp").forward(request, response);
+         }
+         
+         if (process.equalsIgnoreCase("update"))
+         {
+             long id_book = Long.parseLong(request.getParameter("id_book"));
+             Book b = new Book(request.getParameter("codeBook"),request.getParameter("titreBook"),request.getParameter("categorieBook"), request.getParameter("auteurBook"),Integer.parseInt(request.getParameter("nombreCopieBook")) , request.getParameter("date") );
+             b.setIdBook(id_book);
+             DAO.BookDAO.updateBook(b);
+             response.sendRedirect("bookList.jsp");
+         }
+        
 
-            Book book = new Book(request.getParameter("CodeBook"),
-                    request.getParameter("TitreBook"),
-                    request.getParameter("AuteurBook"),
-                    request.getParameter("CategorieBook"),
-                    Integer.parseInt(request.getParameter("NombreCopieBook")),
-                    true);
-
-            //System.out.println(book.toString());
-            bd.addBook(book);
-        }
-
-        processRequest(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        doPost(request, response);
 
     }
 }

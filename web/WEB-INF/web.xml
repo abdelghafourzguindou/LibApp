@@ -10,11 +10,11 @@
         <url-pattern>/books</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Authentification</servlet-name>
+        <servlet-name>authentification</servlet-name>
         <servlet-class>Controllers.AuthentificationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Authentification</servlet-name>
-        <url-pattern>/Authentification</url-pattern>
+        <servlet-name>authentification</servlet-name>
+        <url-pattern>/identity</url-pattern>
     </servlet-mapping>
 </web-app>

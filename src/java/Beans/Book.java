@@ -1,12 +1,13 @@
 package Beans;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 
 /**
  * Created by zGuindouOS on 26/12/2016.
  */
-public class Book {
+public class Book implements Serializable{
 
     private Long idBook;
     private String codeBook;
@@ -14,38 +15,31 @@ public class Book {
     private String categorieBook;
     private String auteurBook;
     private int NombreCopieBook;
-    private Date dateParution;
-    private Boolean image;
+    private String dateParution;
 
-    public Book(String codeBook,
-            String titreBook,
-            String categorieBook,
-            String auteurBook,
-            int nombreCopieBook,
-            Boolean image) {
+    public Book(String codeBook, String titreBook, String categorieBook, String auteurBook, int NombreCopieBook, String dateParution) {
         this.codeBook = codeBook;
         this.titreBook = titreBook;
         this.categorieBook = categorieBook;
         this.auteurBook = auteurBook;
-        this.NombreCopieBook = nombreCopieBook;
-        this.image = image;
+        this.NombreCopieBook = NombreCopieBook;
+        this.dateParution = dateParution;
     }
 
-    public Book(Long idBook,
-            String codeBook,
-            String titreBook,
-            String categorieBook,
-            String auteurBook,
-            int nombreCopieBook,
-            Boolean image) {
-        this.idBook = idBook;
+    public Book(String codeBook, String titreBook, String categorieBook, String auteurBook, int NombreCopieBook) {
         this.codeBook = codeBook;
         this.titreBook = titreBook;
         this.categorieBook = categorieBook;
         this.auteurBook = auteurBook;
-        this.NombreCopieBook = nombreCopieBook;
-        this.image = image;
+        this.NombreCopieBook = NombreCopieBook;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" + "idBook=" + idBook + ", codeBook=" + codeBook + ", titreBook=" + titreBook + ", categorieBook=" + categorieBook + ", auteurBook=" + auteurBook + ", NombreCopieBook=" + NombreCopieBook + ", dateParution=" + dateParution + '}';
+    }
+
+
 
     public Book() {
     }
@@ -98,28 +92,17 @@ public class Book {
         NombreCopieBook = nombreCopieBook;
     }
 
-    public Boolean getimage() {
-        return image;
-    }
 
-    public void setimage(Boolean etatBook) {
-        image = etatBook;
-    }
 
-    public void setDateParution(Date dateParution) {
+    public void setDateParution(String dateParution) {
         this.dateParution = dateParution;
     }
 
-    public void setImage(Boolean image) {
-        this.image = image;
-    }
 
-    public Date getDateParution() {
+    public String getDateParution() {
         return dateParution;
     }
 
-    public Boolean getImage() {
-        return image;
-    }
+  
 
 }

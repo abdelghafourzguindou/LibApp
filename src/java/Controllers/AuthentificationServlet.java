@@ -5,6 +5,8 @@
  */
 package Controllers;
 
+import Beans.User;
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
@@ -29,26 +31,7 @@ public class AuthentificationServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AuthentificationServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AuthentificationServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
 
-            LinkedList listeOfAdherent = DAO.AdherentDAO.Adherentliste();
-            request.setAttribute("listeOfAdherent", listeOfAdherent);
-            request.getRequestDispatcher("AccueilAdherent.jsp").forward(request, response);
-        }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -62,7 +45,25 @@ public class AuthentificationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        //System.out.println(userName+ " "+ password);
+         User user = null;
+        if( UserDAO.isExist(userName, password) )
+        {
+            
+             user = UserDAO.getUser(userName, password);
+             System.out.println(user);
+             response.sendRedirect("bookList.jsp");
+        }
+        else
+        {
+          
+          response.sendRedirect("index.jsp");
+        }
+            
+     
     }
 
     /**
@@ -76,7 +77,9 @@ public class AuthentificationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+     
+        
+        doGet(request, response);
     }
 
     /**

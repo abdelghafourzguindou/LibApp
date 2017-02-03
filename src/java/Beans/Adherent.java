@@ -19,13 +19,34 @@ public class Adherent {
     private String NomAdherent;
     private String PrenomAdherent;
     private String ProfessionAdherent;
-    private Boolean etatAdherent;
+    private int etatAdherent;
     private String Login;
     private String Passwd;
 
     public Adherent() {
     }
+    
+    public Adherent(int IdAdherent, String CodeAdherent, String CIN, String NomAdherent, String PrenomAdherent, String ProfessionAdherent, int etatAdherent) {
+        this.IdAdherent = IdAdherent;
+        this.CodeAdherent = CodeAdherent;
+        this.CIN = CIN;
+        this.NomAdherent = NomAdherent;
+        this.PrenomAdherent = PrenomAdherent;
+        this.ProfessionAdherent = ProfessionAdherent;
+        this.etatAdherent = etatAdherent ;
+    }
 
+     
+    public Adherent(int IdAdherent, String CodeAdherent, String CIN, String NomAdherent, String PrenomAdherent, String ProfessionAdherent) {
+        this.IdAdherent = IdAdherent;
+        this.CodeAdherent = CodeAdherent;
+        this.CIN = CIN;
+        this.NomAdherent = NomAdherent;
+        this.PrenomAdherent = PrenomAdherent;
+        this.ProfessionAdherent = ProfessionAdherent;
+    }
+
+    
     public Adherent(String CodeAdherent, String CIN, String NomAdherent, String PrenomAdherent, String ProfessionAdherent) {
         this.CodeAdherent = CodeAdherent;
         this.CIN = CIN;
@@ -87,7 +108,7 @@ public class Adherent {
         this.CIN = CIN;
     }
 
-    public void setEtatAdherent(Boolean etatAdherent) {
+    public void setEtatAdherent(int etatAdherent) {
         this.etatAdherent = etatAdherent;
     }
 
@@ -99,7 +120,7 @@ public class Adherent {
         this.Passwd = Passwd;
     }
 
-    public Boolean getEtatAdherent() {
+    public int getEtatAdherent() {
         return etatAdherent;
     }
 

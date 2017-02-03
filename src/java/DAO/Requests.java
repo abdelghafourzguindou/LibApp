@@ -1,18 +1,27 @@
 package DAO;
 
 import Beans.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by zGuindouOS, l.IsSaM.l on 26/12/2016.
  */
 public class Requests {
 
+    
+     // LES REQUETES DE   BOOK 
+    
     public static String Book_All() {
         return "select * from Book;";
     }
 
     public static String Book_CodeBook(String Code) {
         return "select * from Book where CodeBook = '" + Code + "';";
+    }
+    
+     public static String Book_IdBook(long idBook) {
+        return "select * from Book where idBook = '" + idBook + "';";
     }
 
     public static String Book_Disponible_All() {
@@ -28,17 +37,20 @@ public class Requests {
     }
 
     public static String Book_Update(Book b) {
-        return "update Book set CodeBook = " + b.getCodeBook()
-                + ",titreBook = " + b.getTitreBook()
-                + ",auteurBook = " + b.getAuteurBook()
-                + ",CategorieBook = " + b.getNombreCopieBook()
-                + ",NombreCopieBook = " + b.getNombreCopieBook()
-                + ",image = " + b.getimage();
+        return "update Book set CodeBook = '"  + b.getCodeBook()
+                + "',titreBook = '"  + b.getTitreBook()
+                + "',auteurBook = '"  + b.getAuteurBook()
+                + "',CategorieBook = '"  + b.getNombreCopieBook()
+                + "',NombreCopieBook = '"  + b.getNombreCopieBook()
+                + "',dateparution = '"  + b.getDateParution()
+                + "' where idBook = '" + b.getIdBook() + "';";
+                
+               
     }
 
     // LES REQUETES DES ADHERENTS
     public static String Adhenrent_all() {
-        return " select * from adherent;";
+        return " select * from adherent where etatAdherent !=0  ;";  
     }
 
     public static String Adh_CIN(String CIN) {
@@ -47,6 +59,10 @@ public class Requests {
 
     public static String Adh_CODE(String CODE) {
         return " select * from adherent where CodeAdherent ='" + CODE + "';";
+    }
+    
+     public static String Adh_ID(int id) {
+        return " select * from adherent where IdAdherent ='" + id + "';";
     }
 
     public static String Adh_like_Nom(String Nom) {
@@ -72,4 +88,33 @@ public class Requests {
     public static String Adh_profil(String CIN, String CODE) {
         return "select * from adherent where CIN='" + CIN + "' and CodeAdherent='" + CODE + "';";
     }
+    
+    // LES REQUETES DE L'ADMIN
+    
+    public static String AdminExist(String name , String passwd) {
+        return "select * from admin where login='" + name + "' and passwd='" + passwd + "';";
+    }
+    
+    public static String Admin_getAdmin(String name , String passwd)
+    {
+       return "select * from admin where login='" + name + "' and passwd='" + passwd + "';"; 
+    }
+    
+        // LES REQUETES DE L'EMPRUNT 
+    
+    public static String Emprunt_En_cours_By_Adh(int id_adherent)
+    {
+        return  "select B.idBook , B.titreBook, E.DateSortie, E.DateMax from emprunt E , Book B where E.IdAdherent = '" + id_adherent + "' AND DateRetour is null AND E.idBook = B.idBook ;";
+    }
+    
+    public static String Emprunt_Remis_By_Adh(int id_adherent)
+    {
+        return  "select B.idBook , B.titreBook, E.DateSortie, E.DateMax from emprunt E , Book B where E.IdAdherent = '" + id_adherent + "' AND DateRetour is not null AND E.idBook = B.idBook ;";
+    }
+    
+    public static String Emprunt_Book_Remis(int id_adherent, int id_book)
+    {
+        return  "update emprunt set DateRetour='" + new SimpleDateFormat("YYYY-MM-dd").format(new Date()) + "' where IdAdherent = '" + id_adherent + "' AND DateRetour is null AND idBook = '" + id_book + "' ;";
+    }
+    
 }
