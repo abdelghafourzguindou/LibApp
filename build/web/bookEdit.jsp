@@ -18,6 +18,7 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
+                <!--
                 <div class="row">
                     <div class="col-md-12">
                      <a href="#" class="lien"><h4>Page d'accueil</h4></a>
@@ -29,7 +30,7 @@
                     </div>
                 </div>
                  <!-- /. ROW  -->
-                 <hr />
+                 <!--<hr />-->
                  
                  <div class="col-md-10 center">
                      <%  Book b = (Book) request.getAttribute("book"); %>
@@ -46,7 +47,7 @@
                     <div class="column">
                     <div class="row col-md-5">
                     
-                    <span class="label_article">- Code du livre:</span>
+                    <span class="label_article ">- Code du livre:</span>
                     <span class="mini_tabulation"><input class="form-control" name="codeBook" value="<%= b.getCodeBook()%>"/><!-- if(isset($_POST['codeBook'])) echo'value="'.$_POST['codeBook'].'" ';-->
                     </span><br/>
 

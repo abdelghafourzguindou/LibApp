@@ -70,7 +70,7 @@ public class Requests {
     }
 
     public static String Adh_Add(Adherent Adh) {
-        return "INSERT INTO `adherent`(`CodeAdherent`, `CIN`, `NomAdherent`, `PrenomAdherent`, `ProfessionAdherent`) VALUES ('" + Adh.getCodeAdherent() + "','" + Adh.getCIN() + "','" + Adh.getNomAdherent() + "','" + Adh.getPrenomAdherent() + "','" + Adh.getProfessionAdherent() + "');";
+        return "INSERT INTO `adherent`(`CodeAdherent`, `CIN`, `NomAdherent`, `PrenomAdherent`, `ProfessionAdherent`, `EtatAdherent`, `Login`, `passwd`) VALUES ('" + Adh.getCodeAdherent() + "','" + Adh.getCIN() + "','" + Adh.getNomAdherent() + "','" + Adh.getPrenomAdherent() + "','" + Adh.getProfessionAdherent() + "' ,'" + Adh.getEtatAdherent() + "' ,'" + Adh.getLogin() + "','" + Adh.getPasswd() + "' );";
     }
 
     public static String Adh_del_CIN(String CIN) {
@@ -117,4 +117,19 @@ public class Requests {
         return  "update emprunt set DateRetour='" + new SimpleDateFormat("YYYY-MM-dd").format(new Date()) + "' where IdAdherent = '" + id_adherent + "' AND DateRetour is null AND idBook = '" + id_book + "' ;";
     }
     
+    public static String Adherent_Attente() {
+        return " select * from adherent where etatAdherent = 0 ";
+    }
+    
+    public static String Adherent_Accepte(int id_adherent) {
+        return "update adherent set EtatAdherent = 1 where IdAdherent = '" + id_adherent + "';";
+    }
+    
+    public static String AdherentExist(String name , String passwd) {
+        return "select * from adherent where login='" + name + "' and passwd='" + passwd + "';";
+    }
+    
+    public static String newReservation(Reservation r) {
+        return "insert into reservation values('" + r.getIdBook() + "', '" + r.getIdAdherent() + "', '" + new SimpleDateFormat("YYYY-MM-dd").format(new Date()) + "');";
+    }
 }

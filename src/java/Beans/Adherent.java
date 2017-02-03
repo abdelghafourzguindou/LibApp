@@ -25,6 +25,29 @@ public class Adherent {
 
     public Adherent() {
     }
+
+    public Adherent(int IdAdherent, String CodeAdherent, String CIN, String NomAdherent, String PrenomAdherent, String ProfessionAdherent, int etatAdherent, String Login, String Passwd) {
+        this.IdAdherent = IdAdherent;
+        this.CodeAdherent = CodeAdherent;
+        this.CIN = CIN;
+        this.NomAdherent = NomAdherent;
+        this.PrenomAdherent = PrenomAdherent;
+        this.ProfessionAdherent = ProfessionAdherent;
+        this.etatAdherent = etatAdherent;
+        this.Login = Login;
+        this.Passwd = Passwd;
+    }
+    
+    public Adherent(String CodeAdherent, String CIN, String NomAdherent, String PrenomAdherent, String ProfessionAdherent, int etatAdherent, String Login, String Password) {
+        this.CodeAdherent = CodeAdherent;
+        this.CIN = CIN;
+        this.NomAdherent = NomAdherent;
+        this.PrenomAdherent = PrenomAdherent;
+        this.ProfessionAdherent = ProfessionAdherent;
+        this.etatAdherent = etatAdherent ;
+        this.Login = Login;
+        this.Passwd = Password;
+    }
     
     public Adherent(int IdAdherent, String CodeAdherent, String CIN, String NomAdherent, String PrenomAdherent, String ProfessionAdherent, int etatAdherent) {
         this.IdAdherent = IdAdherent;

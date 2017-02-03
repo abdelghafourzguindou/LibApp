@@ -57,23 +57,24 @@ public class BookServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
+
          String process = request.getParameter("process");
          System.out.println("Appel servlet"+process);
          if (process.equalsIgnoreCase("delete"))
          {
-         
             BookDAO.removeBook(Long.parseLong(request.getParameter("id_book")));
             ArrayList<Book> liste = BookDAO.getAll();
-            PrintWriter pr = response.getWriter();
-            pr.print(toTable(liste));
             
+            PrintWriter pr = response.getWriter();
+           // Gson J = new Gson();
+
+            //pr.print(J.toJson(liste));
+            pr.print(toTable(liste));
          }  
          if (process.equalsIgnoreCase("insert"))
          {
-             System.out.println(request.getParameter("date"));
+            System.out.println(request.getParameter("date"));
              
-
             BookDAO.addBook(new Book(request.getParameter("codeBook"),request.getParameter("titreBook"),request.getParameter("categorieBook"), request.getParameter("auteurBook"),Integer.parseInt(request.getParameter("nombreCopieBook")) , request.getParameter("date") ));
             response.sendRedirect("bookList.jsp");
          }

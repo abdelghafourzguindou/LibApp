@@ -67,11 +67,13 @@ function delete_book(id_book)
  $.ajax
    ({
      url: 'books',
+     
      Type: 'POST',
      dataType: 'html',
      data:"id_book="+id_book+"&process=delete",
      success: function(reponse) 
      {
+        //alert(reponse);
          $(".table-responsive").empty();
          $(".table-responsive").html(reponse);
          $(".suppression").on('click',function(){  

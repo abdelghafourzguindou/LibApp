@@ -8,7 +8,7 @@
 <!-- Balise d'Livre-->
 				                   
                     <li>
-                        <a href="bookList.php"><i class="glyphicon glyphicon-book"></i>Espace de livre<span class="fa arrow"></span></a>
+                        <a href="bookList.jsp"><i class="glyphicon glyphicon-book"></i>Espace de livre<span class="fa arrow"></span></a>
 
                       </li>  
 
@@ -17,11 +17,11 @@
                         <a href="blank.php"><i class="glyphicon glyphicon-user"></i>Espaces d'adhérents<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="../controleur/afficherAb.php"><span class="glyphicon glyphicon-fullscreen sous_menu_icon" aria-hidden="true"></span> Afficher les adhérents</a>
+                                <a href="AdherentList.jsp"><span class="glyphicon glyphicon-fullscreen sous_menu_icon" aria-hidden="true"></span> Afficher les adhérents</a>
                             </li>
                             
 			    <li>
-                                <a href="../controleur/ajouterAb.php"><span class="glyphicon glyphicon-plus sous_menu_icon" aria-hidden="true"></span> adhérents en attente</a>
+                                <a href="AdherentAttente.jsp"><span class="glyphicon glyphicon-plus sous_menu_icon" aria-hidden="true"></span> adhérents en attente</a>
                             </li>
 			    
 			    

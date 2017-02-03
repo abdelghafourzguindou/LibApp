@@ -43,7 +43,9 @@ section, footer{
 /*----------------------------
 	Styling the forms
 -----------------------------*/
-
+ .img-responsive {
+    margin: 0 auto;
+}
 
 #formContainer{
 	width:288px;

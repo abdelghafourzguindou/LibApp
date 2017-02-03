@@ -25,14 +25,30 @@ public class AdherentDAO {
             ResultSet res = st.executeQuery(Requests.Adhenrent_all());
             while (res.next()) {
 
-                li_Adh.add(new Adherent(res.getInt(1),res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getInt(7)));
-                
+                li_Adh.add(new Adherent(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getInt(7)));
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             return li_Adh;
-            
+
+        }
+    }
+
+    public static LinkedList<Adherent> AdherentlisteAttente() {
+        LinkedList<Adherent> li_Adh = null;
+        try {
+            li_Adh = new LinkedList<Adherent>();
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.Adherent_Attente());
+            while (res.next()) {
+                li_Adh.add(new Adherent(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getInt(7)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return li_Adh;
         }
     }
 
@@ -51,8 +67,8 @@ public class AdherentDAO {
             return Adh;
         }
     }
-    
-      public static Adherent Adh_Id(int Id) {
+
+    public static Adherent Adh_Id(int Id) {
         Adherent Adh = new Adherent();
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
@@ -152,6 +168,54 @@ public class AdherentDAO {
         for (int i = 0; i < li.size(); i++) {
             System.out.println(li.get(i));
         }
+    }
+    
+    public static void AccepterAdherent(int id_adh) {
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            st.executeUpdate(Requests.Adherent_Accepte(id_adh));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static Boolean isExist(String Login, String passwd) {
+
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.AdherentExist(Login, passwd));
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public static Adherent getAdherent(String Login, String passwd) {
+        ResultSet res = null;
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            res = st.executeQuery(Requests.AdherentExist(Login, passwd));
+            res.next();
+            return new Adherent(res.getInt(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getString(6),
+                    res.getInt(7), 
+                    res.getString(8),
+                    res.getString(9));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     public static void main(String[] arg) {

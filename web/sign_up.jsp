@@ -1,10 +1,12 @@
+<%-- 
+    Document   : sign_up.jsp
+    Created on : 3 févr. 2017, 18:41:53
+    Author     : zGuindouOS
+--%>
 
 <!DOCTYPE html>
 <html lang="en">
-
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,72 +35,65 @@
 
     </head>
 
-    <div class="col-sm-2 logo">
+    <!--<div class="col-sm-2 logo" >
         <img src="login_ressources/img/backgrounds/logo_ensias.png"/>
-    </div>
+    </div>-->
     <body>
         <!-- Top content -->
         <div class="top-content">
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
-                        <!--
-                        <div class="text texte">
-                            <span class="grand_titre"><strong>Projet de gestion de bibliothéque </strong></span>
-                            
-                            <div class="description row">
-                            <div class="col-sm-4"></div>
-                            <div class="col-sm-4">
-                                
-                                <p>Ce projet a été réalisé par:<br/>
-                               	<span style="text-align: left;">
-                                        
-                                    <strong>- GHANOUCH Issam</strong><br/>
-                                    <strong>- ZGUINDOU Abdelghafour</strong><br/> 
-                                    <strong>- ALAOUI Mehdi</strong><br/>
-                                        Encadré par: Mr. <strong>HAMLAOUI Mohamed</strong><br/>
-                                    </span>
-                                </p>
-                              
-                            </div>
-                            </div>
-                        </div>
-                        -->
-
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                             <div class="form-top">
-                                <div class="form-top-left">
-                                    <h3>Accés à  la page de gestion</h3>
-                                    <p>Entrer votre nom d'utilisateur et votre mot de passe pour vous connecter:
-
-
-                                    <div id="errone" hidden><br/><h4 style="color: red;">Nom d 'utilisateur ou mot de passe incorrect</h4>
-                                    </div>
-                                    </p>
+                               <div class="form-top-left">
+                                    <h3>Sign up a LibApp</h3>
                                 </div>
                                 <div class="form-top-right">
                                     <i class="fa fa-lock"></i>
                                 </div>
                             </div>
                             <div class="form-bottom">
-                                <form  action="identity" method="post" class="login-form">
+                                <form  action="AdherentProcess" method="post" class="login-form">
+                                    <input type="hidden" name="sign_up" value="sign_up" />
                                     <div class="form-group">
-                                        <label class="sr-only" for="form-username">Pseudo</label>
-                                        <input type="text" name="userName" placeholder="Nom d'utilisateur..." class="form-username form-control" id="form-username">
+                                        <label class="sr-only" for="form-username">Code</label>
+                                        <input type="text" name="CodeAdh" placeholder="Code..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">CIN</label>
+                                        <input type="text" name="CINAdh" placeholder="CIN..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">Nom</label>
+                                        <input type="text" name="NomAdh" placeholder="Nom..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">Prenom</label>
+                                        <input type="text" name="PrenomAdh" placeholder="Prenom..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">Profession</label>
+                                        <input type="text" name="ProfessionAdh" placeholder="Profession..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">Login</label>
+                                        <input type="text" name="LoginAdh" placeholder="Login..." class="form-username form-control" id="form-username">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-password">Password</label>
-                                        <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                        <input type="password" name="PasswordAdh" placeholder="Password..." class="form-password form-control" id="form-password">
                                     </div>
-                                    <button type="submit" class="btn">Connexion</button>
+                                    <button type="submit" class="btn">Sign up</button>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
 
-                </div><h4><em>Copyright <strong>ENSIAS</strong> 2017</em></h4>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
             </div>            
         </div>
 

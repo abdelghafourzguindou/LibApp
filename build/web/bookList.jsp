@@ -15,8 +15,10 @@
       <%@include file="page_elements/navbar.jsp" %> 
 
         <!-- /. NAV SIDE  -->
+        
         <div id="page-wrapper" >
             <div id="page-inner">
+            <!--
             <div class="row">
                     <div class="col-md-12">
                      <a href="accueil.php" class="lien"><h4>Page d'accueil</h4></a>
@@ -28,8 +30,10 @@
                        
                     </div>
                 </div>
+            -->
+            
                  <!-- /. ROW  -->
-                 <hr />
+                 <!--<hr />-->
 
                 
                  <!-- /. ROW  -->

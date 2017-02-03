@@ -23,6 +23,7 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
+                <!--
             <div class="row">
                     <div class="col-md-12">
                      <a href="accueil.php" class="lien"><h4>Page d'accueil</h4></a>
@@ -35,7 +36,7 @@
                     </div>
                 </div>
                  <!-- /. ROW  -->
-                 <hr />
+                 <!--<hr />-->
 
                 
                  <!-- /. ROW  -->
@@ -122,7 +123,7 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     
-    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.10.2.js"></script>
    
       <!-- BOOTSTRAP SCRIPTS -->
       <script src="assets/js/bootstrap.js"></script>
