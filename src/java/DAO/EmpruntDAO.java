@@ -27,11 +27,10 @@ public class EmpruntDAO {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             ResultSet res = st.executeQuery(Requests.Emprunt_En_cours_By_Adh(id_adherent));
             while (res.next()) {
-
                 li_Emp.add(new EmpruntP(res.getInt(1),res.getString(2), res.getString(3), res.getString(4)));
                    
             }
-        } catch (Exception e) {
+         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             return li_Emp;

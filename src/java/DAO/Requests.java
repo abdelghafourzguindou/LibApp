@@ -104,11 +104,13 @@ public class Requests {
     
     public static String Emprunt_En_cours_By_Adh(int id_adherent)
     {
+        
         return  "select B.idBook , B.titreBook, E.DateSortie, E.DateMax from emprunt E , Book B where E.IdAdherent = '" + id_adherent + "' AND DateRetour is null AND E.idBook = B.idBook ;";
     }
     
     public static String Emprunt_Remis_By_Adh(int id_adherent)
     {
+
         return  "select B.idBook , B.titreBook, E.DateSortie, E.DateMax from emprunt E , Book B where E.IdAdherent = '" + id_adherent + "' AND DateRetour is not null AND E.idBook = B.idBook ;";
     }
     

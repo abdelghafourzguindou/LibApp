@@ -109,7 +109,6 @@
 
                 <%
                 int etat = Integer.parseInt(request.getParameter("ETAT"));
-                System.out.println(etat);
                 if(etat == 1) // ici on met la condition si l'abonné est débloqué
                 {
                 %>
@@ -148,8 +147,8 @@
                         <hr/>
                         <div id="actualiser" >
 
-                        <% ArrayList<EmpruntP> li_empr = DAO.EmpruntDAO.get_All_En_Cours(adh.getIdAdherent()); 
-                        if(li_empr.size() == 0 )
+                        <% ArrayList<EmpruntP> li_empr = DAO.EmpruntDAO.get_All_En_Cours(adh.getIdAdherent());
+                         if(li_empr.size() == 0 )
                         {
                         %>
                           <h2>Pas d'emprunts actuels pour cet adhérent</h2>
