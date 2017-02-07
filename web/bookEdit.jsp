@@ -32,12 +32,12 @@
                  <!-- /. ROW  -->
                  <!--<hr />-->
                  
-                 <div class="col-md-10 center">
+                 <div class="col-md-12 center">
                      <%  Book b = (Book) request.getAttribute("book"); %>
                     <form method="post" action="books">
                     <input type="text" hidden name="process" value="update" />
                      <input type="text" hidden name="id_book" value="<%= b.getIdBook() %>" />
-                    <div class="well well-lg"             
+                    <div class="well well-lg">             
                     <h4 class="well_titre">
                         <i class="glyphicon glyphicon-book"></i>
                         <span> Titre du Livre:</span><span class="mini_tabulation" >
@@ -45,22 +45,24 @@
                     </h4>
                     <div class="row col-md-8">
                     <div class="column">
-                    <div class="row col-md-5">
+
+                    <div class="row col-md-12">
                         <br>
-                    <span>- Code du livre:</span>
+                    <span>Code du livre:</span>
                     <span class="mini_tabulation"><input class="form-control" name="codeBook" value="<%= b.getCodeBook()%>"/><!-- if(isset($_POST['codeBook'])) echo'value="'.$_POST['codeBook'].'" ';-->
                     </span><br/>
 
-                    <br><span class="">- Nom de l'auteur:</span>
+                    <br><span class="">Nom de l'auteur:</span>
                     <span class="mini_tabulation"><input class="form-control" name="auteurBook"  value="<%= b.getAuteurBook()%>"/><!-- if(isset($_POST['auteurBook'])) echo'value="'.$_POST['auteurBook'].'" ';-->
                     </span><br/>
 
-                    <br><span class="">- Catégorie du livre</span>
+                    <br><span class="">Catégorie du livre</span>
                     <span class="mini_tabulation"><input class="form-control" name="categorieBook"  value="<%= b.getCategorieBook() %>"/>
                     
-                    <br><span class="">- Date de parution du livre</span>
+                    <br><span class="">Date de parution du livre</span>
                     <span class="mini_tabulation"><input class="form-control"   name="date" id="date" value="<%= b.getDateParution() %>" />
-                    <br><span class="">- Nombre de copies du livre</span>
+                    <br><span class="">Nombre de copies du livre</span>
+
                     <span class="mini_tabulation"><input class="form-control" name="nombreCopieBook"  value="<%= b.getNombreCopieBook() %>"/>
                     </span><br/>
 

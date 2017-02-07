@@ -1,6 +1,5 @@
 
 		<!-- Balise de "modifier mon profil-->
-               
 		<li>
                         <a  href="#"><i class="glyphicon glyphicon-cog"></i> Modifier le profil</a>
                     </li>	

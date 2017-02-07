@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-    NOTIFICATION();
+     NOTIFICATION();
     // getNombreReservation();
     //alert(NombreReservation); 
     

@@ -26,10 +26,12 @@
                         <%  
                          Adherent adh =  (Adherent)request.getSession().getAttribute("currentAdherent"); 
                             %>
-<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 center">
+
+<div class="col-lg-12 col-md-10 col-sm-12 col-xs-12 center">
                     <div class="well well-lg">
                     <h4 class="well_titre"><i class="glyphicon glyphicon-user"></i> Informations sur l'adhérent</h4> 
-                    <div class="row col-md-8">
+                    <div class="row col-md-12">
+
                     <div class="column">      
 
 
@@ -59,8 +61,10 @@
                     <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                         
-                        <a href="lien_image"><img src="assets/img/ensias.png"
-                        alt="Photo Abonne" title="Cliquez pour agrandir" /></a>
+
+                        <!--<a href="lien_image"><img src="assets/img/ensias.png"
+                        alt="Photo Abonne" title="Cliquez pour agrandir" /></a>-->
+
 
                 
 
@@ -202,7 +206,9 @@
 
 
                         <!-- JQUERY SCRIPTS -->
+
         <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+
                         <script src="js/bootstrap.min.js"></script>
                         <!-- METISMENU SCRIPTS -->
                         <script src="assets/js/jquery.metisMenu.js"></script>

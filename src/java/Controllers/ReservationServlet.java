@@ -38,7 +38,7 @@ public class ReservationServlet extends HttpServlet {
         int id_adherent = Integer.parseInt(request.getParameter("id_adherent"));
         int id_book =   Integer.parseInt(request.getParameter("id_book")) ;
         String process = request.getParameter("process");
-        // come from admin
+
         if ( process.equals("valider"))
         {
            // Ajout de l emprunt 
@@ -50,6 +50,7 @@ public class ReservationServlet extends HttpServlet {
            
             
         } 
+
         // come from adherent
         if ( process.equals("reserver"))
         {
@@ -63,11 +64,12 @@ public class ReservationServlet extends HttpServlet {
         }
          if ( process.equals("count"))
         {
-            System.out.println("kkk");
+         
         PrintWriter pr = response.getWriter();
             System.out.println(DAO.ReservationDAO.selectCountReservation());
         pr.print(DAO.ReservationDAO.selectCountReservation());
         
+
         }
     }
 

@@ -47,14 +47,14 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
-                            <div class="form-top">
+                            <!--<div class="form-top">
                                <div class="form-top-left">
-                                    <h3>Sign up a LibApp</h3>
-                                </div>
+                                    <h1>Sign up a LibApp</h1>
+                                </div>-->
                                 <div class="form-top-right">
-                                    <i class="fa fa-lock"></i>
+                                    <i class="fa fa-user-plus" aria-hidden="true"></i>
                                 </div>
-                            </div>
+                            <!--</div>-->
                             <div class="form-bottom">
                                 <form  action="AdherentProcess" method="post" class="login-form">
                                     <input type="hidden" name="sign_up" value="sign_up" />
@@ -90,6 +90,7 @@
                                 </form>
 
                             </div>
+                            <br/>Non j'ai un compte <a href="indexAdherent.jsp">Sign in</a>
                             
                         </div>
                         

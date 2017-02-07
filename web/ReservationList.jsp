@@ -135,6 +135,7 @@
     <!-- JQUERY SCRIPTS -->
     
         <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+
       <!-- BOOTSTRAP SCRIPTS -->
       <script src="assets/js/bootstrap.min.js"></script>   
     
@@ -145,13 +146,10 @@
      <!-- DATA TABLE SCRIPTS -->
  
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-    
-             
 
          <!-- CUSTOM SCRIPTS -->
          <!--script src="assets/js/custom.js"></script-->
        <script src="assets/js/custom.js"></script>
 
-      
 </body>
 </html>

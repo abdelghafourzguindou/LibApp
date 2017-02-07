@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author zGuindouOS
  */
 public class ReservationDAO {
-    
+
     public static void addReservation(Reservation r) {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
@@ -29,6 +29,7 @@ public class ReservationDAO {
     public static ArrayList<ReservationP> getAll()
     {
          ArrayList<ReservationP> li_Res = null;
+
         try {
             li_Res = new ArrayList<ReservationP>();
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
@@ -37,15 +38,18 @@ public class ReservationDAO {
 
                 li_Res.add(new ReservationP(res.getInt(1),res.getString(2), res.getString(3), res.getInt(4) , res.getString(5) , res.getString(6) , res.getString(7)));
                    
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             return li_Res;
+
             
         } 
     }
     
+
     public static void deleteReservation(ReservationP r) {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
@@ -54,8 +58,10 @@ public class ReservationDAO {
             System.out.println(e.getMessage());
         }
     }
+
     
      public static void Decremente_Book_Reservation(int id_book ) {
+
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             st.executeUpdate(Requests.Reservation_Decrementation(id_book));
@@ -63,7 +69,7 @@ public class ReservationDAO {
             System.out.println(e.getMessage());
         }
     }
-     
+
     public static Integer selectCountReservation() {
         Integer c = 0;
         try {
@@ -76,15 +82,12 @@ public class ReservationDAO {
         }
         return c;
     }
-    
-    
-    
 
 
-public static void main(String[] str)
-{
+    public static void main(String[] str) {
 
-    for(ReservationP P : getAll())
-        System.out.println(P);
-}
+        
+            System.out.println(selectCountReservation());
+        
+    }
 }

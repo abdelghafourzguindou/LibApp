@@ -101,8 +101,7 @@ public class Requests {
     public static String Adh_Etat(int idAdherent) {
         return "select etatAdherent from adherent where idAdherent='" + idAdherent +"';";
     }
-    
-    
+
     // ************************ LES REQUETES DE L'ADMIN ************************//
     
     public static String AdminExist(String name , String passwd) {
@@ -148,6 +147,10 @@ public class Requests {
         return " select * from adherent where etatAdherent = 0 ";
     }
     
+    public static String SelectCountAdherentAttente() {
+        return " select count(*) from adherent where etatAdherent = 0 ";
+    }
+    
     public static String Adherent_Accepte(int id_adherent) {
         return "update adherent set EtatAdherent = 1 where IdAdherent = '" + id_adherent + "';";
     }
@@ -191,5 +194,5 @@ public class Requests {
     public static String SelectCountReservation() {
         return " select count(*) from Reservation";
     }
-    
+
 }

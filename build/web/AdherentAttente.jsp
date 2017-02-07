@@ -51,6 +51,7 @@
                     <div class="panel-heading">
                         
                       <h4 class="well_titre_2"> Liste des Adherents</h4>
+
                       
                     
                         </div>
@@ -135,7 +136,9 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     
+
         <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+
       <!-- BOOTSTRAP SCRIPTS -->
       <script src="assets/js/bootstrap.min.js"></script>   
     
@@ -153,6 +156,5 @@
     
        <!--script src="assets/js/custom.js"></script-->
 
-       
 </body>
 </html>

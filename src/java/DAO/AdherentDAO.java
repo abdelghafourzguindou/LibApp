@@ -260,10 +260,8 @@ public class AdherentDAO {
             e.printStackTrace();
             return null;
         }
-
     }
-    
-    public static int getEtat(int id_adherent) {
+        public static int getEtat(int id_adherent) {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             ResultSet res = st.executeQuery(Requests.Adh_Etat(id_adherent));
@@ -276,10 +274,22 @@ public class AdherentDAO {
     }
 
 
+       public static Integer selectCountAdherentEnAttente() {
+            Integer c = 0;
+            try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.SelectCountAdherentAttente());
+            res.next();
+            c = res.getInt(1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+            return c;
+        } 
+
     public static void main(String[] arg) {
 
-        System.out.println(getEtat(2));
-
+        System.out.println(selectCountAdherentEnAttente());
     }
 
 }

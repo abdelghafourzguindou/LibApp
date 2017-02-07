@@ -21,7 +21,7 @@
                  <!-- /. ROW  -->
                  <hr />
                  
-                 <div class="col-md-10 center">
+                 <div class="col-md-12 center">
                     <form method="post" action="books">
                     <input type="text" hidden name="process" value="insert" />
                     <div class="well well-lg"             
@@ -30,27 +30,28 @@
                         <span> Titre du Livre:</span><span class="mini_tabulation">
                             <input class="form-control" name="titreBook"  > <!-- if(isset($_POST['titreBook'])) echo'value="'.$_POST['titreBook'].'" '-->
                         </span><br/>
-                    </h4>
+                    
                     <div class="row col-md-8">
                     <div class="column">
-                    <div class="row col-md-5">
+                    <div class="row col-md-12">
                     
-                    <br><span class="">- Code du livre:</span>
+
+                    <br><span class="">Code du livre</span>
                     <span class="mini_tabulation"><input class="form-control" name="codeBook"/><!-- if(isset($_POST['codeBook'])) echo'value="'.$_POST['codeBook'].'" ';-->
                     </span><br/>
 
-                    <br><span class="">- Nom de l'auteur:</span>
+                    <br><span class="">Nom de l'auteur</span>
                     <span class="mini_tabulation"><input class="form-control" name="auteurBook"/><!-- if(isset($_POST['auteurBook'])) echo'value="'.$_POST['auteurBook'].'" ';-->
                     </span><br/>
 
-                    <br> <span class="">- Catégorie du livre</span>
+                    <br> <span class="">Catégorie du livre</span>
                     <span class="mini_tabulation"><input class="form-control" name="categorieBook"/><!-- if(isset($_POST['categorieBook'])) echo'value="'.$_POST['categorieBook'].'" ';-->
                     </span><br/>
                     
-                    <br><span class="">- Date de parution du livre</span>
+                    <br><span class="">Date de parution du livre</span>
                     <span class="mini_tabulation"><input class="form-control"  type="date" name="date"/><!-- if(isset($_POST['dateParutionBook'])) echo'value="'.$_POST['dateParutionBook'].'" ';-->
                     </span><br/>
-                    <br><span class="">- Nombre de copies du livre</span>
+                    <br><span class="">Nombre de copies du livre</span>
                     <span class="mini_tabulation"><input class="form-control" name="nombreCopieBook"/><!-- if(isset($_POST['nombreCopieBook'])) echo'value="'.$_POST['nombreCopieBook'].'" ';-->
                     </span><br/>
 

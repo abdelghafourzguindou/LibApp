@@ -42,10 +42,10 @@
                         <% int id = Integer.parseInt(request.getParameter("id_adherent")); 
                          Adherent adh = DAO.AdherentDAO.Adh_Id(id);
                           adh.setIdAdherent(id);   %>
-<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 center">
+<div class="col-lg-12 col-md-10 col-sm-12 col-xs-12 center">
                     <div class="well well-lg">
                     <h4 class="well_titre"><i class="glyphicon glyphicon-user"></i> Informations sur l'adhérent</h4> 
-                    <div class="row col-md-8">
+                    <div class="row col-md-12">
                     <div class="column">      
 
 
@@ -75,8 +75,8 @@
                     <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                         
-                        <a href="lien_image"><img src="assets/img/ensias.png"
-                        alt="Photo Abonne" title="Cliquez pour agrandir" /></a>
+                        <!--<a href="lien_image"><img src="assets/img/ensias.png"
+                        alt="Photo Abonne" title="Cliquez pour agrandir" /></a>-->
 
                 
 
@@ -86,19 +86,14 @@
                 <hr/>
 
                     <div class="row">
-                        
-                        
-                       
-
 
 
                  
                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                
                         <a href="#" class="btn btn-warning btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12 "><span class="glyphicon glyphicon-retweet icon_in_button" aria-hidden="true"></span>Prolonger </a>
-                 
-                </div>
 
+                </div>
 
                 <%
                 int etat = Integer.parseInt(request.getParameter("ETAT")); 
@@ -231,8 +226,9 @@
 
 
 
-                        <!-- JQUERY SCRIPTS -->
+
         <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+
                         <script src="js/bootstrap.min.js"></script>
                         <!-- METISMENU SCRIPTS -->
                         <script src="assets/js/jquery.metisMenu.js"></script>

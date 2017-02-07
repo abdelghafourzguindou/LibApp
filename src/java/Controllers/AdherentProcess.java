@@ -74,8 +74,7 @@ public class AdherentProcess extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("currentAdherent", adh);
            
-            request.getRequestDispatcher("AccueilAdherent.jsp").forward(request, response);
-            
+            request.getRequestDispatcher("AccueilAdherent.jsp").forward(request, response);            
         } else 
         {
             response.sendRedirect("indexAdherent.jsp");
@@ -140,8 +139,7 @@ public class AdherentProcess extends HttpServlet {
         {
             DAO.AdherentDAO.DebloquerAdherent(id_adherent);
         
-        }
-        
+        }      
         // ******* CHECK ETAT QUAND L AUTHENTIFICATION DE L ADHERENT
         if( process.equals("checkETAT"))
         {
@@ -150,6 +148,7 @@ public class AdherentProcess extends HttpServlet {
             response.getWriter().print(etatAdherent);
         }
         
+
     }
 
 

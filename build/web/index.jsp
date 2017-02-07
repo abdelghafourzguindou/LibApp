@@ -4,7 +4,6 @@
 
 
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,9 +32,7 @@
 
     </head>
 
-    <div class="col-sm-2 logo">
-        <img src="login_ressources/img/backgrounds/logo_ensias.png"/>
-    </div>
+    
     <body>
         <!-- Top content -->
         <div class="top-content">
@@ -44,19 +41,19 @@
                     <div class="row">
                         <!--
                         <div class="text texte">
-                            <span class="grand_titre"><strong>Projet de gestion de bibliothéque </strong></span>
+                            <span class="grand_titre"><strong>Projet de gestion de biblioth?que </strong></span>
                             
                             <div class="description row">
                             <div class="col-sm-4"></div>
                             <div class="col-sm-4">
                                 
-                                <p>Ce projet a été réalisé par:<br/>
+                                <p>Ce projet a ?t? r?alis? par:<br/>
                                	<span style="text-align: left;">
                                         
                                     <strong>- GHANOUCH Issam</strong><br/>
                                     <strong>- ZGUINDOU Abdelghafour</strong><br/> 
                                     <strong>- ALAOUI Mehdi</strong><br/>
-                                        Encadré par: Mr. <strong>HAMLAOUI Mohamed</strong><br/>
+                                        Encadr? par: Mr. <strong>HAMLAOUI Mohamed</strong><br/>
                                     </span>
                                 </p>
                               
@@ -70,7 +67,7 @@
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                             <div class="form-top">
                                 <div class="form-top-left">
-                                    <h3>Accés à  la page de gestion</h3>
+                                    <h3>Acceder à la page de gestion</h3>
                                     <p>Entrer votre nom d'utilisateur et votre mot de passe pour vous connecter:
 
 
@@ -99,8 +96,7 @@
                         </div>
                     </div>
 
-                </div><h4><em>Copyright <strong>ENSIAS</strong> 2017</em></h4>
-            </div>            
+                        
         </div>
 
 
