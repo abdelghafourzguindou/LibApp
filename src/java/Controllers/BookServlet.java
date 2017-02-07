@@ -24,11 +24,11 @@ public class BookServlet extends HttpServlet {
     public String toTable( ArrayList<Book> li ) 
     {
         
-             String str=  "<table class=\"table table-striped table-bordered table-hover\" id=\"dataTables-example\"><thead><tr><th class=\"center\"></th><th class=\"center\">Titre du livre</th><th class=\"center\">Auteur du livre</th><th class=\"center\">Genre du livre</th><th class=\"center\">Date d'apparution</th><th class=\"center\">Nombre de copies disponibles</th><th colspan=\"2\"><center>Gestion</center></th></tr></thead><div id=\"corpTab\"><tbody>";                               
-             for ( Book bk : li )  
-                str +=  "<tr><td><i class=\"glyphicon glyphicon-book icon_in_button\"></i></td><td>"+bk.getTitreBook()+"</td><td>"+bk.getAuteurBook()+"</td><td>"+bk.getCategorieBook()+"</td><td>"+bk.getDateParution()+"</td><td>"+bk.getNombreCopieBook()+"</td><td><center><a href=\"books?process=modifier&id_book="+bk.getIdBook()+"\" ><input type=\"button\" class=\"modification  btn btn-success\" id=\""+bk.getIdBook()+"\" value=\"Modifier\"></center></td><td></a><center><input type=\"button\" class=\"suppression  btn btn-success\" id=\""+bk.getIdBook()+"\" value=\"Supprimer\"></center></td></tr>"; 
+String str = "<table class=\"table table-striped table-bordered table-hover\" id=\"dataTables-example\"><thead><tr><th><center>|</center></th><th><center>Titre</center></th><th class=\"\"><center>Auteur</center></th><th><center>Genre</center></th><th><center>Date<center></th><th ><center>Copies</center></th><th><center>Gestion</center></th><th><center>Gestion</center></th></tr></thead><tbody>";            
+            for ( Book bk : li )  
+                str +=  "<tr><td><i class=\"glyphicon glyphicon-book icon_in_button\"></i></td><td>"+bk.getTitreBook()+"</td><td>"+bk.getAuteurBook()+"</td><td>"+bk.getCategorieBook()+"</td><td>"+bk.getDateParution()+"</td><td><center>"+bk.getNombreCopieBook()+"</center></td><td><center><a href=\"books?process=modifier&id_book="+bk.getIdBook()+"\" ><input type=\"button\" class=\"modification  btn btn-success\" id=\""+bk.getIdBook()+"\" value=\"Modifier\"></center></td><td></a><center><input   type=\"button\" class=\"suppression  btn btn-success\" style=\"background-color:#d2322d;\" id=\""+bk.getIdBook()+"\" value=\"Supprimer\"></center></td></tr>"; 
                
-             str += "</tbody></div></table>";
+             str += "</tbody></table>";
              return str;                                         
                                                         
                                                         
@@ -57,23 +57,26 @@ public class BookServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
+
          String process = request.getParameter("process");
          System.out.println("Appel servlet"+process);
+         
          if (process.equalsIgnoreCase("delete"))
          {
-         
             BookDAO.removeBook(Long.parseLong(request.getParameter("id_book")));
             ArrayList<Book> liste = BookDAO.getAll();
-            PrintWriter pr = response.getWriter();
-            pr.print(toTable(liste));
             
+            PrintWriter pr = response.getWriter();
+           // Gson J = new Gson();
+
+            //pr.print(J.toJson(liste));
+            pr.print(toTable(liste));
          }  
+         
          if (process.equalsIgnoreCase("insert"))
          {
-             System.out.println(request.getParameter("date"));
+            System.out.println(request.getParameter("date"));
              
-
             BookDAO.addBook(new Book(request.getParameter("codeBook"),request.getParameter("titreBook"),request.getParameter("categorieBook"), request.getParameter("auteurBook"),Integer.parseInt(request.getParameter("nombreCopieBook")) , request.getParameter("date") ));
             response.sendRedirect("bookList.jsp");
          }
@@ -91,6 +94,7 @@ public class BookServlet extends HttpServlet {
              long id_book = Long.parseLong(request.getParameter("id_book"));
              Book b = new Book(request.getParameter("codeBook"),request.getParameter("titreBook"),request.getParameter("categorieBook"), request.getParameter("auteurBook"),Integer.parseInt(request.getParameter("nombreCopieBook")) , request.getParameter("date") );
              b.setIdBook(id_book);
+             System.out.println("------------"+b);
              DAO.BookDAO.updateBook(b);
              response.sendRedirect("bookList.jsp");
          }

@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,6 +47,9 @@ public class AuthentificationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
+        String process = request.getParameter("process");
+        if (process.equals("conexion"))
+        {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         //System.out.println(userName+ " "+ password);
@@ -54,15 +58,22 @@ public class AuthentificationServlet extends HttpServlet {
         {
             
              user = UserDAO.getUser(userName, password);
+             HttpSession session = request.getSession(true);
+             session.setAttribute("user", user);
              System.out.println(user);
-             response.sendRedirect("bookList.jsp");
+             request.getRequestDispatcher("bookList.jsp").forward(request, response);
         }
         else
         {
           
           response.sendRedirect("index.jsp");
         }
-            
+        }
+        if( process.equals("deconexion"))
+        {
+            request.getSession(false);
+            response.sendRedirect("index.jsp");
+        }
      
     }
 
