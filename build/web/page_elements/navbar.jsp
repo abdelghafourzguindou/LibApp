@@ -6,27 +6,21 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
 
 <!--  Cette partie contient la barre du haut -->
 <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-            <!--<div class="navbar-header">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard.jsp">Accueil</a> 
-            </div>-->
+                <a class="navbar-brand" href="dashboard.jsp">
+                    <i class="fa fa-bell-o"></i>
+                    <%=(DAO.AdherentDAO.selectCountAdherentEnAttente() + DAO.ReservationDAO.selectCountReservation())%> new
+                </a>
+                
+            </div>
     <!------------------------------>
-                             
-                            <div class="panel panel-back noti-box">
-                                <span class="icon-box bg-color-blue set-icon">
-                                    <i class="fa fa-bell-o"></i>
-                                </span>
-                                <div class="text-box" >
-                                    <a href="#"><p class="main-text">30 New</p></a>
-                                    <p class="text-muted">Notifications</p>
-                                </div>
-                            </div>
-                        
+                            
     <!------------------------------>
     <div style="color: white;padding: 15px 50px 5px 50px;float: left;font-size: 22px;">Bienvenue, monsieur  <% if (request.getSession(false) == null ) response.sendRedirect("index.jsp");   User u = (User)request.getSession().getAttribute("user"); System.out.println(u); %><span style="color: red;"> <%=u.getPrenom_admin().toUpperCase() %></span> </div>  
 <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> On est le <%=new Date().toString() %> &nbsp;<a href="identity?process=deconexion" class="btn btn-danger square-btn-adjust">Déconnexion</a> </div>
