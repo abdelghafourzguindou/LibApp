@@ -18,7 +18,7 @@
     <body>
         <div id="wrapper">
             <%@include file="page_elements/navbar.jsp" %>
-            <div id="page-wrapper" >
+            <div id="page-wrapper">
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
@@ -29,108 +29,92 @@
                     <!-- /. ROW  -->
                     <hr />
                     <div class="row">
+                        <a href="AdherentAttente.jsp">
                         <div class="col-md-3 col-sm-6 col-xs-6">           
                             <div class="panel panel-back noti-box">
                                 <span class="icon-box bg-color-red set-icon">
                                     <i class="fa fa-users" aria-hidden="true"></i>
                                 </span>
                                 <div class="text-box" >
-                                    <a href="AdherentAttente.jsp"><p class="main-text"> <%=DAO.AdherentDAO.selectCountAdherentEnAttente() %> New</p> </a>
-                                    <p class="text-muted">Adherent</p>
-                                    
+                                    <p class="main-text"> <%=DAO.AdherentDAO.selectCountAdherentEnAttente()%> New</p> 
+                                    <p class="text-muted">Adherents</p>
+
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">           
-                            <div class="panel panel-back noti-box">
-                                <span class="icon-box bg-color-green set-icon">
-                                    <i class="fa fa-bars"></i>
-                                </span>
-                                <div class="text-box" >
-                                    <a href="#"><p class="main-text">30 Tasks</p></a>
-                                    <p class="text-muted">Remaining</p>
-                                </div>
-                            </div>
-                        </div>
+                                    </a>
+                                    <a href="#">
                         <div class="col-md-3 col-sm-6 col-xs-6">           
                             <div class="panel panel-back noti-box">
                                 <span class="icon-box bg-color-blue set-icon">
-                                    <i class="fa fa-bell-o"></i>
+                                    <i class="fa fa-bars"></i>
                                 </span>
                                 <div class="text-box" >
-                                    <a href="#"><p class="main-text">30 New</p></a>
+                                    <p class="main-text">30 New</p>
                                     <p class="text-muted">Notifications</p>
                                 </div>
                             </div>
                         </div>
+                                    <a/>
+                                    <a href="ReservationList.jsp">
                         <div class="col-md-3 col-sm-6 col-xs-6">           
                             <div class="panel panel-back noti-box">
                                 <span class="icon-box bg-color-brown set-icon">
                                     <i class="fa fa-plus-square" aria-hidden="true"></i>
                                 </span>
                                 <div class="text-box" >
-                                    <a href="ReservationList.jsp"><p class="main-text"><%=DAO.ReservationDAO.selectCountReservation() %> new</p></a>
-                                    <p class="text-muted">Resevation</p>
+                                    <p class="main-text"><%=DAO.ReservationDAO.selectCountReservation()%> New</p>
+                                    <p class="text-muted">Resevations</p>
                                 </div>
                             </div>
                         </div>
+                                    </a>
                     </div>
                     <hr />                
                     <div class="row"> 
 
 
-                        <div class="col-md-9 col-sm-12 col-xs-12" hidden>                     
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Bar Chart Example
-                                </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">                       
+                            <div class="panel panel-primary text-center no-boder bg-color-green">
                                 <div class="panel-body">
-                                    <div id="morris-bar-chart"></div>
+                                    <i class="fa fa-book fa-5x"></i>
+                                    <h3><%=DAO.BookDAO.selectCountBook()%> </h3>
                                 </div>
-                            </div>            
+                                <div class="panel-footer back-footer-red">
+                                    Totale des livres
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">      
+                            <div class="panel panel-primary text-center no-boder bg-color-red">
+                                <div class="panel-body">
+                                    <i class="fa fa-users fa-5x"></i>
+                                    <h3><%=DAO.AdherentDAO.selectCountAdherent()%> </h3>
+                                </div>
+                                <div class="panel-footer back-footer-red">
+                                    Totale des adherents
+                                </div>
+                            </div>                         
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">      
+                            <div class="panel panel-primary text-center no-boder bg-color-blue">
+                                <div class="panel-body">
+                                    <i class="fa fa-chain fa-5x"></i>
+                                    <h3><%=DAO.EmpruntDAO.SelectCountEmprunt()%> </h3>
+                                </div>
+                                <div class="panel-footer back-footer-red">
+                                    Totale des emprunts
+                                </div>
+                            </div>                         
                         </div>
                         
                         
-                   
-                        
-                        <!--<div class="col-md-6 col-sm-12 col-xs-12">-->
-                            <!--<div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Statistique
-                                </div>-->
-                                <div class="panel-body">
-                                    <div id="morris-donut-chart"></div>
-                                </div>
-                           <!-- </div>
-                        </div>-->
-                  
-                        
-                        <!--<div class="col-md-3 col-sm-12 col-xs-12">                       
-                            <div class="panel panel-primary text-center no-boder bg-color-green">
-                                <div class="panel-body">
-                                    <i class="fa fa-bar-chart-o fa-5x"></i>
-                                    <h3>120 GB </h3>
-                                </div>
-                                <div class="panel-footer back-footer-green">
-                                    Disk Space Available
 
-                                </div>
-                            </div>
-                            <div class="panel panel-primary text-center no-boder bg-color-red">
-                                <div class="panel-body">
-                                    <i class="fa fa-edit fa-5x"></i>
-                                    <h3>20,000 </h3>
-                                </div>
-                                <div class="panel-footer back-footer-red">
-                                    Articles Pending
 
-                                </div>
-                            </div>                         
-                        </div>-->
 
                     </div>
 
-                   
+
                     <!-- /. ROW  -->           
                 </div>
                 <!-- /. PAGE INNER  -->

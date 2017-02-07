@@ -271,6 +271,19 @@ public class AdherentDAO {
         }
             return c;
         } 
+       
+        public static Integer selectCountAdherent() {
+            Integer c = 0;
+            try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.SelectCountAdherent());
+            res.next();
+            c = res.getInt(1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+            return c;
+        } 
 
     public static void main(String[] arg) {
 

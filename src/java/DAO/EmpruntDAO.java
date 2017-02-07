@@ -105,6 +105,18 @@ public class EmpruntDAO {
             return li_Emp;
             
         }  
-        
+    }
+    
+    public static int SelectCountEmprunt() {
+        int c = 0;
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.SelectCountEmprunt());
+            res.next();
+            c = res.getInt(1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
     }
 }
