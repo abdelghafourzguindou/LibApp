@@ -57,7 +57,7 @@ public class AdherentProcess extends HttpServlet {
         DAO.AdherentDAO.Adh_Add(adherent);
         HttpSession session = request.getSession(true);
         session.setAttribute("currentAdherent", adherent);
-        response.sendRedirect("AccueilAdherent.jsp");
+        response.sendRedirect("EspaceAdherent.jsp");
     }
 
     private void sign_in(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -74,7 +74,7 @@ public class AdherentProcess extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("currentAdherent", adh);
            
-            request.getRequestDispatcher("AccueilAdherent.jsp").forward(request, response);            
+            request.getRequestDispatcher("EspaceAdherent.jsp").forward(request, response);            
         } else 
         {
             response.sendRedirect("indexAdherent.jsp");

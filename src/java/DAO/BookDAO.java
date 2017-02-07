@@ -99,5 +99,18 @@ public class BookDAO {
         } finally {
             return b;
         }
-    }       
+    }
+    
+     public static Integer selectCountBook() {
+            Integer c = 0;
+            try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.SelectCountBook());
+            res.next();
+            c = res.getInt(1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+            return c;
+        } 
 }

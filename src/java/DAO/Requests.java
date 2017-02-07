@@ -195,4 +195,14 @@ public class Requests {
         return " select count(*) from Reservation";
     }
 
+    //Statistique
+    public static String SelectCountBook() {
+        return " select count(*) from Book";
+    }
+    public static String SelectCountAdherent() {
+        return " select count(*) from Adherent where etatAdherent = 1";
+    }
+    public static String SelectCountEmprunt() {
+        return " select count(*) from Emprunt";
+    }
 }

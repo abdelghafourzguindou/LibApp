@@ -11,7 +11,7 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
 -->
 
 <!--  Cette partie contient la barre du haut -->
-<% Adherent ad = (Adherent)request.getSession().getAttribute("currentAdherent"); %>
+        <% Adherent AD = (Adherent)request.getSession().getAttribute("currentAdherent"); %>
 
 <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -21,9 +21,9 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="accueil.php">Accueil</a> 
+                <a class="navbar-brand" href="EspaceAdherent.jsp">Accueil</a> 
             </div>
-    <div style="color: white;padding: 15px 50px 5px 50px;float: left;font-size: 22px;">Bienvenue, monsieur  <% if (request.getSession(false) == null ) response.sendRedirect("indexAdherent.jsp");   %><span style="color: red;"> <%=ad.getNomAdherent().toUpperCase() %></span> </div>  
+    <div style="color: white;padding: 15px 50px 5px 50px;float: left;font-size: 22px;">Bienvenue, monsieur  <% if (request.getSession(false) == null ) response.sendRedirect("indexAdherent.jsp");   %><span style="color: red;"> <%=AD.getNomAdherent().toUpperCase() %></span> </div>  
 <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> On est le <%=new Date().toString() %> &nbsp;<a href="identity?process=deconexion" class="btn btn-danger square-btn-adjust">D�connexion</a> </div>
         </nav>
 <!-- ici c'est la fin de la barre du haut et commence la barre latérale (plus précisemment l'image de profil  -->
@@ -41,3 +41,52 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
     </div>
 
 </nav>
+        
+        
+        <style>
+            
+.s
+{
+  background-color: #000;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  z-index: 50;
+  display: none
+}
+
+        </style>
+        
+        <input hidden id="ETATADHERENT" value="<%=AD.getEtatAdherent() %>" />
+        <input hidden id="IDADHERENT" value="<%=AD.getIdAdherent()%>" />
+        
+        
+           <div class="s">
+            <div class="ss">
+  		</div>
+                <div class="windows8">
+			<div class="wBall" id="wBall_1">)
+				<div class="wInnerBall"></div>
+			</div>
+			<div class="wBall" id="wBall_2">
+				<div class="wInnerBall"></div>
+			</div>
+			<div class="wBall" id="wBall_3">
+				<div class="wInnerBall"></div>
+			</div>
+			<div class="wBall" id="wBall_4">
+				<div class="wInnerBall"></div>
+			</div>
+			<div class="wBall" id="wBall_5">
+				<div class="wInnerBall"></div>
+			</div>
+
+		</div> 
+
+        </div>
+                <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+                <script src="js/Listener.js" type="text/javascript"></script>
+

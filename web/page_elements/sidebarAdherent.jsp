@@ -18,16 +18,16 @@
 </li>
 
 <!-- Balise d'emprunt-->
-<li>
+<!--li>
     <a href="blank.php"><i class="glyphicon glyphicon-shopping-cart"></i>Espace d'emprunts<span class="fa arrow"></span></a>
-</li>  
+</li-->  
 <!-- Balise de réservation-->
-<li>
+<!--li>
     <a href=""><i class="glyphicon glyphicon-time"></i>Espace de réservations<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
             <a href="ReservationList.jsp"><span class="glyphicon glyphicon-fullscreen sous_menu_icon" aria-hidden="true"></span>Afficher les réservations</a>
         </li>
     </ul>
-</li>  
+</li-->  
 

@@ -4,12 +4,10 @@ var exETAT ;
      
      audioElement = document.createElement('audio');
      audioElement.setAttribute('src', 'sounds/sumsumg.mp3');
-     
-     audioElement.addEventListener("canplay",function(){
-     audioElement.play();    
-     });
      exETAT = $("#ETATADHERENT").val();
-     checkFirstState();
+     // checkFirstState();
+     audioElement.addEventListener("canplay",function(){  
+     });   
      window.setInterval(function(){ checkState(); } , 3000); 
      
  });
@@ -97,12 +95,6 @@ var exETAT ;
  {
      exETAT = $("#ETATADHERENT").val();
    
-                    if(exETAT == 1)
-                        {
-
-                           $(".normal").show();
-                           $(".s").hide();
-                        }
 
                         // SI L ADHERENT EST EN ATTENTE 
                         if(exETAT == 0)
