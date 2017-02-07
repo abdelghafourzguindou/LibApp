@@ -1,28 +1,32 @@
-<%-- 
-    Document   : AdherentList
-    Created on : 2 févr. 2017, 18:50:06
-    Author     : l.IsSaM.l
---%>
-
 <%@page import="DAO.BookDAO"%>
 <%@page import="Beans.Book"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="Beans.Adherent"%>
 <html>
-   
 <head>
 <%@include file="page_elements/header.jsp" %>
-
+<style>
+    .pagination .paginate_button a.paginate_button {
+    color: #fffff !important;
+}
+.paging_full_numbers a.paginate_active {
+    color: #fff !important;
+}
+</style>
    </head>
 <body>
     <div id="wrapper">
   
       <%@include file="page_elements/navbar.jsp" %> 
-
+        
+      
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
-            <div id="page-inner">
+           
+                
+       
+ 
                 <!--
             <div class="row">
                     <div class="col-md-12">
@@ -41,39 +45,55 @@
                 
                  <!-- /. ROW  -->
                  
-                 <div class="column col-lg-11 col-md-11 col-sm-12 col-xs-12 center">
-                 <div class="abonnes_principal zone_grise_droite">              
-                <div class="well well-lg">
-                <div class="row">
-                <h4 class="well_titre_2"> Liste des Adhérents</h4>
-                <div class="col-lg-7 col-md-7"></div>
-                <div class="col-lg-5 col-md-5">
-                <!--a class="btn btn-success btn-lg col-lg-12 col-md-12 col-sm-12 col-xs-12 bouton-ajouter-abonne-f" href="bookInsert.jsp">
-                <span class="glyphicon glyphicon-plus icon_in_button" aria-hidden="true"></span>Ajouter Livre</a-->
-                </div></div><br/><br/>
-                    <!-- Advanced Tables -->
-                <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped table-bordered table-hover"  id="myTable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="center"></th>
-                                                            <th class="center">Code Adhérent </th>
-                                                            <th class="center">CIN</th>
-                                                            <th class="center">Nom</th>
-                                                            <th class="center">prenom</th>
-                                                            <th class="center">Profession</th>                                                            
-                                                            <th colspan="2"><center>Gestion</center></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <div id="corpTab">
+                 
+                 <div class="row">
+                      <!-- Ajouter Livre -->
+                 
+                <div class="col-md-12">
+                
+               
+                    
+                <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                    
+                    <div class="panel-heading">
+                        
+                      <h4 class="well_titre_2"> Liste des Adherents</h4>
+                      
+                    
+                        </div>
+                        <div class="panel-body">
+                             <div id="page-inner">
+                                 
+                                                                 
+                                         <div class="form-group input-group">
+                                            <input type="text" class="form-control" id="myInputTextField">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                            <div class="table-responsive">
+                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                                            <th>|</th>
+                                                            <th>Code Adherent </th>
+                                                            <th>CIN</th>
+                                                            <th>Nom</th>
+                                                            <th>prenom</th>
+                                                            <th>Profession</th>
+                                                            <th ><center>Consultation</center></th>
+
+
+                                        </tr>
+                                    </thead>
                                                     <tbody>
                                                     <!-- nb_forms=0 -->
                                                     <!-- foreach (Livre L: Liste_Livres -->
                                                     
                                                        
-                                                    <%  LinkedList<Adherent> li = DAO.AdherentDAO.Adherentliste();
+                                                     <%  LinkedList<Adherent> li = DAO.AdherentDAO.Adherentliste();
                                                        for ( Adherent ad : li ) {  %>   
                                                 <tr>
                                                      <td>
@@ -90,9 +110,6 @@
                                                         <td>
                                                     <center><a href="AdherentDisplay.jsp?ETAT=<%=ad.getEtatAdherent() %>&id_adherent=<%=ad.getIdAdherent()%>" > <input type="button" class="ConsulterAdh btn btn-success" id="<%=ad.getIdAdherent()%>" value="Consulter"></a> </center>
                                                         </td>
-                                                        <td>
-                                                        <center><a href="adherents?process=modifier&id_adherent=<%=ad.getIdAdherent()%>" > <input type="button" class="ModifierAdh  btn btn-success " id="<%=ad.getIdAdherent()%>" value="Modifier"></a></center>
-                                                        </td>
                                                 </tr>
                                                 <% } %>
 
@@ -100,24 +117,22 @@
                                                     <!-- fin foreach -->
                                                         
                                                         
-                                                    </tbody>
-                                                    </div>
+                                 </tbody>
                                                 </table>
-                                            </div>
-                                        </div>
-                                    
-                                </div>
-                            </div>
+                                         </div>
+                            
                         </div>
+                    </div>
+                    <!--End Advanced Tables -->
                 </div>
-
-                 </div>
-                    
+            </div
         </div>
+    </div>
                
     </div>
+</div>
              <!-- /. PAGE INNER  -->
-            </div>
+          
          <!-- /. PAGE WRAPPER  -->
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
@@ -126,26 +141,18 @@
     <script src="assets/js/jquery-1.10.2.js"></script>
    
       <!-- BOOTSTRAP SCRIPTS -->
-      <script src="assets/js/bootstrap.js"></script>
-      <script src="assets/js/bootstrap.min.js"></script>
-   
+      <script src="assets/js/bootstrap.min.js"></script>   
     
     <script src="js/jquery.bootpop.js" ></script>
     <!-- METISMENU SCRIPTS -->
-    <script src="js/jquery.metisMenu.js"></script>
+    <!--script src="assets/js/jquery.metisMenu.js"></script-->
      <!-- DATA TABLE SCRIPTS -->
-        <script type="text/javascript" src="dist/demo.js"></script>
-    <script src="js/ControlBook.js" ></script>
-    <script src="assets/js/jquery.dataTables.min.js"></script>
-        <script>
+ 
+    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
 
-            $(document).ready(function () {
-                 $('#myTable').DataTable();
-            });
-    </script>
          <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
-    
+         <!--script src="assets/js/custom.js"></script-->
+         <script src="js/ControlAdherent.js" ></script>
    
 </body>
 </html>

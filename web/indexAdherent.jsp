@@ -76,7 +76,7 @@
                                     <button type="submit" class="btn">Connexion</button>
                                 </form>
                                 <br/>
-                                <a href="sign_up.jsp">sign up</a>
+                                j'ai pas un compte <a href="sign_up.jsp">sign up</a>
                             </div>
 
                         </div>

@@ -10,6 +10,7 @@
  $(document).ready(function () {
           
    
+     refrechDatable();
 
            $(".modification").click(function() {
                var id_book = $(this).attr("id"); 
@@ -19,12 +20,12 @@
            $(".suppression").on('click',function(){
                
                var id_book = $(this).attr("id");
-               Bootpop.ask('Are you sure?', {
+               Bootpop.alert('Are you sure?', {
                  title : 'Confirmation',
                  size :  'small',
                  
                  buttons :  [ 
-                     {   btnClass : 'btn btn-success', 
+                     {   btnClass : 'btn btn-danger', 
                          btnLabel : 'YES', 
                          btnValue : 'YES',
                          btnAction : function(answer)
@@ -33,7 +34,17 @@
                              delete_book(id_book);
                              
                          }
-                     }  
+                     },
+                      {   btnClass : 'btn btn-success', 
+                         btnLabel : 'Cancel', 
+                         btnValue : 'Cancel',
+                         btnAction : function(answer)
+                         {  
+                             $('.modal').modal('hide');
+                             delete_book(id_book);
+                             
+                         }
+                     } 
                     
                  
                             ],  
@@ -44,22 +55,30 @@
                
            } );  
         });
-  
-function modification(id_book)
+      
+function refrechDatable()
 {
     
- $.ajax
-   ({
-     url: 'books',
-     Type: '<<<<<<<<<<<<<<<<<<',
-     dataType: 'html',
-     data:"id_book="+id_book+"&process=modifier",
-     success: function(reponse) 
-     {
-     } 
-    
-    
+            $('#dataTables-example').dataTable({
+        scrollY: 800,
+        bPaginate: false,
+        paging: true,
+        info: false,
+        bFilter: true,
+        ordering: true,
+        searching: true,
+        "dom": "lfrti"
+        
+        });
+         $(".dataTables_filter").attr('hidden','true');
+                
+
+            oTable = $('#dataTables-example').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+            $('#myInputTextField').keyup(function(){
+                            oTable.search($(this).val()).draw() ;
 });
+                        
+
 
 }
 function delete_book(id_book)
@@ -76,15 +95,19 @@ function delete_book(id_book)
         //alert(reponse);
          $(".table-responsive").empty();
          $(".table-responsive").html(reponse);
-         $(".suppression").on('click',function(){  
+         
+     
+                    refrechDatable();
+      
+     $(".suppression").on('click',function(){
                
-              var id_book = $(this).attr("id");
-               Bootpop.ask('Are you sure?', {
+               var id_book = $(this).attr("id");
+               Bootpop.alert('Are you sure?', {
                  title : 'Confirmation',
                  size :  'small',
                  
                  buttons :  [ 
-                     {   btnClass : 'btn btn-success', 
+                     {   btnClass : 'btn btn-danger', 
                          btnLabel : 'YES', 
                          btnValue : 'YES',
                          btnAction : function(answer)
@@ -93,17 +116,27 @@ function delete_book(id_book)
                              delete_book(id_book);
                              
                          }
-                     }  
+                     },
+                      {   btnClass : 'btn btn-success', 
+                         btnLabel : 'Cancel', 
+                         btnValue : 'Cancel',
+                         btnAction : function(answer)
+                         {  
+                             $('.modal').modal('hide');
+                             delete_book(id_book);
+                             
+                         }
+                     } 
                     
                  
                             ],  
                  
                });
                
+                     
                
-               
-
            } ); 
+           
          
       
      },

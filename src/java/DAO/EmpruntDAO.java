@@ -7,6 +7,7 @@ package DAO;
 
 import Beans.Adherent;
 import Beans.EmpruntP;
+import Beans.Reservation;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -72,5 +73,38 @@ public class EmpruntDAO {
             System.out.println(e.getMessage());
             
         }
+    }
+    
+    
+    
+    public static void addEmprunt(EmpruntP E) {
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            st.executeUpdate(Requests.Emprunt_ADD(E));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
+    public static LinkedList<EmpruntP> get_All_En_Cours()
+    {
+       LinkedList<EmpruntP> li_Emp = null;
+        try {
+            li_Emp = new LinkedList<EmpruntP>();
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.Emprunt_En_cours());
+            while (res.next()) {
+
+                li_Emp.add(new EmpruntP(res.getInt(1),res.getInt(2), res.getString(3), res.getString(4) , res.getString(5)));
+                   
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return li_Emp;
+            
+        }  
+        
     }
 }

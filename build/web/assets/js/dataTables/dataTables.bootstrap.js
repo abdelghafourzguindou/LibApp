@@ -2,7 +2,7 @@
 $.extend(true, $.fn.dataTable.defaults, {
     "sDom": "<'row'<'col-sm-6'l><'col-sm-6'f>r>" + "t" + "<'row'<'col-sm-6'i><'col-sm-6'p>>",
     "oLanguage": {
-        "sLengthMenu": "_MENU_ Nombre par page"
+        "sLengthMenu": "_MENU_ records per page"
     }
 });
 
@@ -145,10 +145,10 @@ if ($.fn.dataTable.Api) {
                 );
                 var els = $('a', nPaging);
                 $(els[0]).bind('click.DT', {
-                    action: "précédent"
+                    action: "previous"
                 }, fnClickHandler);
                 $(els[1]).bind('click.DT', {
-                    action: "suivant"
+                    action: "next"
                 }, fnClickHandler);
             },
 

@@ -42,44 +42,41 @@
                         <% int id = Integer.parseInt(request.getParameter("id_adherent")); 
                          Adherent adh = DAO.AdherentDAO.Adh_Id(id);
                           adh.setIdAdherent(id);   %>
-<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 center">
+<div class="col-lg-12 col-md-10 col-sm-12 col-xs-12 center">
                     <div class="well well-lg">
                     <h4 class="well_titre"><i class="glyphicon glyphicon-user"></i> Informations sur l'adhérent</h4> 
-                    <div class="row col-md-8">
+                    <div class="row col-md-12">
                     <div class="column">      
 
 
-                    <span class="label_article">- Id Adhérent:</span>
-                    <span class="mini_tabulation"><span class="label_article2"><%=adh.getIdAdherent() %></span></span><br/>
+                        <span class="">Id Adhérent</span><br>
+                        <input class="form-control" id="idAdherent"  type="text" disabled  value="<%=adh.getIdAdherent() %>">
 
-                    <span class="label_article">- Code adhérent:</span>
-                    <span class="mini_tabulation"><span class="label_article2"><%=adh.getCodeAdherent()%></span></span><br/>
+                    <br><span class="">Code adhérent</span><br>
+                    <input class="Amodier form-control" type="text" id="CodeAdherent"  disabled  value="<%=adh.getCodeAdherent()%>"><br>
+
     
-                    <span class="label_article">- Nom :</span>
-                    <span class="mini_tabulation"><span class="label_article2"><%=adh.getNomAdherent()%> <%=adh.getPrenomAdherent() %></span></span><br/>
+                    <span class="">Nom </span><br>
+                    <input class="Amodier form-control"  type="text" id="NomAdherent"  disabled value="<%=adh.getNomAdherent()%>"><br>
 
-                    <span class="label_article">- CIN:</span>
-                    <span class="mini_tabulation"><span class="label_article2"> <%=adh.getCIN() %> </span></span><br/>
+                    <span class="">CIN </span><br>
+                    <input class="Amodier form-control"  type="text" id="CinAdherent" disabled value="<%=adh.getCIN()%>"><br>
 
-                    <span class="label_article">- Profession:</span>
-                    <span class="mini_tabulation"><span class="label_article2"> <%=adh.getProfessionAdherent() %> </span></span><br/>
+                    <span class="">Profession</span><br>
+                    <input class="Amodier form-control"  type="text"  id="ProfessionAdherent" disabled value="<%=adh.getProfessionAdherent()%>"><br>
  
-                    <span class="label_article">- Login adherent:</span>
-                    <span class="mini_tabulation"><span class="label_article2"> <%=adh.getLogin()%> </span></span><br/>
+                    <span class="">Login adherent</span><br>
+                    <input class="Amodier form-control"  type="text" id="Login" disabled value="<%=adh.getLogin()%>"><br>
 
-                    <span class="label_article">- Mot de passe adherent:</span>
-                    <span class="mini_tabulation"><span class="label_article2"> <%=adh.getPasswd() %> </span></span><br/>
+                    <span class="">Mot de passe adherent</span><br>
+                    <input class="Amodier form-control"  type="text" id="Passwd" disabled value="<%=adh.getPasswd()%>"><br>
 
-                    
-
-               
-                    <br/><br/>
                     </div></div>
                     <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                         
-                        <a href="lien_image"><img src="assets/img/ensias.png"
-                        alt="Photo Abonne" title="Cliquez pour agrandir" /></a>
+                        <!--<a href="lien_image"><img src="assets/img/ensias.png"
+                        alt="Photo Abonne" title="Cliquez pour agrandir" /></a>-->
 
                 
 
@@ -89,58 +86,30 @@
                 <hr/>
 
                     <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-                
-                
-                <a  href="adherentEdit.jsp?id=<%=adh.getIdAdherent() %>" class="btn btn-info btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12 "><span class="glyphicon glyphicon-pencil icon_in_button" aria-hidden="true"></span>Modifier </a>
-              
-                </div>
-
-
-
 
                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                
-                        <a href="Prolongement.jsp?id=<%=adh.getIdAdherent() %>" class="btn btn-warning btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12 "><span class="glyphicon glyphicon-retweet icon_in_button" aria-hidden="true"></span>Prolonger </a>
-                 
+                        <a href="#" class="btn btn-warning btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12 "><span class="glyphicon glyphicon-retweet icon_in_button" aria-hidden="true"></span>Prolonger </a>
+               
                 </div>
 
-
                 <%
-                int etat = Integer.parseInt(request.getParameter("ETAT"));
-                System.out.println(etat);
-                if(etat == 1) // ici on met la condition si l'abonné est débloqué
-                {
+                int etat = Integer.parseInt(request.getParameter("ETAT")); 
                 %>
 
-                <div id="bloquer" class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div id="bloquer"   class=" col-lg-4 col-md-4 col-sm-4 col-xs-12"  <% if(etat != 1) { %> hidden <% } %> >
                         <a href="#" class="btn btn-danger btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12 "><span class="glyphicon glyphicon-ban-circle icon_in_button" aria-hidden="true"></span>Bloquer </a>
-                    </form>
                  </div>
 
-
-                <%
-                }else
-                {
-                %>
-
-
-
-               <div id="debloquer" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+               <div id="debloquer" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" <% if(etat == 1) { %> hidden <% } %> >
                    
-                        <a href="#" class="btn btn-danger btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12 "><span class="glyphicon glyphicon-ban-circle icon_in_button" aria-hidden="true"></span>Debloquer </a>
-                    </form>
+                        <a href="#" class="btn btn-success btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12 "><span class="glyphicon glyphicon-ban-circle icon_in_button" aria-hidden="true"></span>Debloquer </a>
                  </div>
               
-                
-                <%
-                 }
-                %>
+         
                 
           
-
+               
 
                         <br/><br/>
 
@@ -148,16 +117,21 @@
 
                         <hr/>
                         <div id="actualiser" >
-
+                        <div class="col-md-12">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                        
+                   
                         <% ArrayList<EmpruntP> li_empr = DAO.EmpruntDAO.get_All_En_Cours(adh.getIdAdherent()); 
                         if(li_empr.size() == 0 )
                         {
                         %>
-                          <h2>Pas d'emprunts actuels pour cet adhérent</h2>
+                         PAS D'EMPRUNTS ACTUELS 
                         <% 
                         } else {   %>
 
-                         <h2>Les emprunts actuels de cet adhérent</h2>
+                        EMPRUNTS ACTUELS     :     <strong><%=li_empr.size() %></strong>
+                         </div>
                          <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -170,8 +144,6 @@
                                     <th>Date max de remise</th>
                                     <th>Remettre</th>
 
-
-
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -182,7 +154,7 @@
                                     <td> <%=Emp.getNomBook() %></td>
                                     <td><%=Emp.getDateSortie() %></td>
                                     <td><%=Emp.getDateMax() %></td>
-                                    <td><a href="#" id="<%=Emp.getIdBook() %>" name="<%=adh.getIdAdherent() %>"class='remettre'>Remettre</a></td>';
+                                    <td><center><a href="#" id="<%=Emp.getIdBook() %>" name="<%=adh.getIdAdherent() %>" class='remettre btn btn-warning btn-xs'>Remettre</a></center></td>
                                   <tr>
                                    
 
@@ -195,13 +167,15 @@
                     </div>
                                 
                         <br/><br/>
-                        
+                     </div> 
                         <% ArrayList<EmpruntP> li_empr_Remis = DAO.EmpruntDAO.get_All_Remis(adh.getIdAdherent()); 
                         if(li_empr_Remis.size() != 0 )
                         {
                         %>
-
-                         <h2>Les emprunts Remise de cet adhérent</h2>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                         EMPRUNTS REMISES 
+                          </div>
                          <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -239,7 +213,8 @@
                                 
                         </div>
 
-
+                        </div>
+                        </div>
 
                         <hr/>
 
@@ -250,25 +225,22 @@
 
 
                         <!-- JQUERY SCRIPTS -->
-                        <script src="./assets/js/jquery-1.10.2.js"></script>
+                        <script src="js/jquery-1.10.2.js"></script>
                         <!-- BOOTSTRAP SCRIPTS -->
-                        <script src="./assets/js/bootstrap.min.js"></script>
+                        <script src="js/bootstrap.min.js"></script>
                         <!-- METISMENU SCRIPTS -->
-                        <script src="./assets/js/jquery.metisMenu.js"></script>
+                        <script src="assets/js/jquery.metisMenu.js"></script>
                         <!-- DATA TABLE SCRIPTS -->
-                        <script src="./assets/js/dataTables/jquery.dataTables.js"></script>
-                        <script src="./assets/js/dataTables/dataTables.bootstrap.js"></script>
-                        <script src="./assets/js/dataTables/dataTables.bootstrap.js"></script>
+                        <script src="js/dataTables.bootstrap.min.js"></script>
+                        <script src="js/jquery.dataTables.min.js"></script>
+                        
                          <script src="js/jquery.bootpop.js" ></script>
 
-                        <script src="js/controlEmprunt.js"></script>
-                        <!--script>
-                            $(document).ready(function () {
-                                $('#dataTables-example').dataTable();
-                            });
-                        </script-->
-                        <!-- CUSTOM SCRIPTS -->
-                        <script src="../vue/js/custom.js"></script>
+                         <script src="js/controlEmprunt.js"></script>
+                        
+                       
+                        <script src="assets/js/custom.js"></script>
+
 
                     </div>
       	  	    </div>

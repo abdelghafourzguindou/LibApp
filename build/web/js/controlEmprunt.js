@@ -7,7 +7,7 @@
 $(document).ready(function ()
 
 {
-    
+
     // Listener de la remise d un livre 
     $(".remettre").click(function () {
         var id_book = $(this).attr("id");
@@ -32,26 +32,93 @@ $(document).ready(function ()
         });
 
     });
+    
+    
+    
+    // Listener Quand je fait modifier 
+    
+    $("#modifier").click(function()
+    {
+        $(".Amodier").removeAttr("disabled");
+        $("#imodifier").hide();  
+        $("#valider").show();
+    });
 
+      $("#valider").click(function()
+    {
+  
+        $(".Amodier").attr('disabled',true);
+        $("#valider").hide();
+        $("#imodifier").show();
+        
+        var Adherent = new Object();
+        
+        // Recupérer Info de l adherent
+        Adherent.idAdherent = $("#idAdherent").val();
+        Adherent.CodeAdherent = $("#CodeAdherent").val();
+        Adherent.NomAdherent = $("#NomAdherent").val();
+        Adherent.CinAdherent = $("#CinAdherent").val();
+        Adherent.ProfessionAdherent = $("#ProfessionAdherent").val();
+        Adherent.Login = $("#Login").val();
+        Adherent.Passwd = $("#Passwd").val();
+        
+        MidifierProfil(Adherent);
+
+
+       
+    });
 
    // Listener pour bloquer et debloquer 
    
    
   $("#bloquer").click(function () {
+      
+   blocage($("#idAdherent").val(),"bloquer");
+   $("#bloquer").hide();
    $("#debloquer").show();
  
-  
   });
 
 
   $("#debloquer").click(function () {
-   $(this).hide();
+      
+   blocage($("#idAdherent").val(),"debloquer");
+   $("#debloquer").hide();
    $("#bloquer").show();
   
   });
 
 });
 
+// Modifier le profil
+
+function MidifierProfil(Adherent)
+{
+    
+    $.ajax
+            ({
+                
+                url : 'AdherentProcess',
+                Type: 'POST',
+                dataType: 'html',
+                data: "process=update&id_adherent="+Adherent.idAdherent+"&CodeAdherent="+Adherent.CodeAdherent+"&NomAdherent="+Adherent.NomAdherent+"&CinAdherent="+ Adherent.CinAdherent+"&ProfessionAdherent="+Adherent.ProfessionAdherent+"&Login="+Adherent.Login+"&Passwd="+Adherent.Passwd,
+                success: function (reponse) {
+                    alert("reponse");
+               
+                 
+                },
+
+                error: function () {
+                    alert("deconnexion");
+                }
+
+
+            });
+    
+        
+}
+
+// book remis 
 
 function doModifier(id_book, id_adherent)
 {
@@ -99,3 +166,26 @@ function doModifier(id_book, id_adherent)
             });
 }
 
+
+function blocage(idAdherent,type)
+{
+    
+   $.ajax
+            ({
+                
+                url : 'AdherentProcess',
+                Type: 'POST',
+                dataType: 'html',
+                data: "process="+type+"&id_adherent="+idAdherent,
+                success: function (reponse) {
+               
+                },
+
+                error: function () {
+                    alert("deconnexion");
+                }
+
+
+            }); 
+            
+}

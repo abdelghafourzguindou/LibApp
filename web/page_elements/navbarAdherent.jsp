@@ -28,7 +28,7 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
         <ul class="nav" id="main-menu">
             <li class="text-center">
                 <!-- La balise suivante édite l'image de profil de l'admin-->
-                <img src="assets/img/ensias.png" class="user-image img-responsive"/>
+                <img src="assets/img/Library3.png" class="user-image img-responsive"/>
             </li>
 
             <%@ include file="sidebarAdherent.jsp" %>	

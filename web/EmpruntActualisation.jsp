@@ -8,7 +8,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<% 
+
+<div class="col-md-12">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                        
+                   
+                       <% 
     int IdAdherent = Integer.parseInt(request.getParameter("IdAdherent"));
     int idBook = Integer.parseInt(request.getParameter("id_book"));
     
@@ -17,11 +23,12 @@
                         if(li_empr.size() == 0 )
                         {
                         %>
-                          <h2>Pas d'emprunts actuels pour cet adhérent</h2>
+                         PAS D'EMPRUNTS ACTUELS 
                         <% 
                         } else {   %>
 
-                         <h2>Les emprunts actuels de cet adhérent</h2>
+                        EMPRUNTS ACTUELS     :     <strong><%=li_empr.size() %></strong>
+                         </div>
                          <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -34,8 +41,6 @@
                                     <th>Date max de remise</th>
                                     <th>Remettre</th>
 
-
-
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -46,7 +51,7 @@
                                     <td> <%=Emp.getNomBook() %></td>
                                     <td><%=Emp.getDateSortie() %></td>
                                     <td><%=Emp.getDateMax() %></td>
-                                    <td><a href="#" id="<%=Emp.getIdBook() %>" name="<%=IdAdherent%>"class='remettre'>Remettre</a></td>';
+                                    <td><center><a href="#" id="<%=Emp.getIdBook() %>" name="<%=IdAdherent %>" class='remettre btn btn-warning btn-xs'>Remettre</a></center></td>
                                   <tr>
                                    
 
@@ -59,13 +64,15 @@
                     </div>
                                 
                         <br/><br/>
-                        
+                     </div> 
                         <% ArrayList<EmpruntP> li_empr_Remis = DAO.EmpruntDAO.get_All_Remis(IdAdherent); 
                         if(li_empr_Remis.size() != 0 )
                         {
                         %>
-
-                         <h2>Les emprunts Remise de cet adhérent</h2>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                         EMPRUNTS REMISES 
+                          </div>
                          <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -100,3 +107,14 @@
                         </div>
                       </div>
                     </div>
+                                
+                        </div>
+
+                        </div>
+                                
+                                
+                                
+                                
+                                
+                                
+                                

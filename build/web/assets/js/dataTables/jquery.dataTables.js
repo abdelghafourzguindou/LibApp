@@ -10479,7 +10479,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sFirst": "Début",
+				"sFirst": "First",
 	
 	
 				/**
@@ -10502,7 +10502,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sLast": "Fin",
+				"sLast": "Last",
 	
 	
 				/**
@@ -10525,7 +10525,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Suivant",
+				"sNext": "Next",
 	
 	
 				/**
@@ -10548,7 +10548,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Précédent"
+				"sPrevious": "Previous"
 			},
 	
 			/**
@@ -10603,7 +10603,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "De _START_ à _END_ de _TOTAL_",
+			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
 	
 	
 			/**
@@ -10624,7 +10624,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "De 0 à 0 de 0",
+			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
 	
 	
 			/**
@@ -10813,7 +10813,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Rechercher :",
+			"sSearch": "Search:",
 	
 	
 			/**
@@ -10860,7 +10860,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "Résultat introuvable"
+			"sZeroRecords": "No matching records found"
 		},
 	
 	
@@ -11006,7 +11006,7 @@
 		 *      } );
 		 *    } )
 		 */
-		"sPaginationType": "full",
+		"sPaginationType": "simple_numbers",
 	
 	
 		/**

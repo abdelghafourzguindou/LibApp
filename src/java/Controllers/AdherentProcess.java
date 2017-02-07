@@ -15,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 /**
  *
@@ -41,6 +43,8 @@ public class AdherentProcess extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private void sign_up(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+
         DAO.AdherentDAO.Adh_Add(new Adherent(
                 request.getParameter("CodeAdh"),
                 request.getParameter("CINAdh"),
@@ -55,6 +59,8 @@ public class AdherentProcess extends HttpServlet {
     }
 
     private void sign_in(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        
+
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
 
@@ -63,8 +69,10 @@ public class AdherentProcess extends HttpServlet {
         if (DAO.AdherentDAO.isExist(userName, password)) {
             adh = DAO.AdherentDAO.getAdherent(userName, password);
             //response.sendRedirect("EspaceAdherent.jsp");
-            request.setAttribute("CurrentAdherent", adh);
-            request.getRequestDispatcher("EspaceAdherent.jsp").forward(request, response);
+            HttpSession session = request.getSession(true);
+            session.setAttribute("currentAdherent", adh);
+           
+            request.getRequestDispatcher("Livre_List_Adherent.jsp").forward(request, response);
             
         } else {
             response.sendRedirect("indexAdherent.jsp");
@@ -73,29 +81,73 @@ public class AdherentProcess extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+            throws ServletException, IOException {    
+        
+        String process = request.getParameter("process") ;
         int id_adherent = Integer.parseInt(request.getParameter("id_adherent"));
+        
+        // ****************   Accepter Adherent  ****************//
+        if( process.equals("accepte") )
+        { 
         PrintWriter pr = response.getWriter();
         DAO.AdherentDAO.AccepterAdherent(id_adherent);
         LinkedList<Adherent> adhList = DAO.AdherentDAO.AdherentlisteAttente();
         Gson J = new Gson();
         pr.print(J.toJson(adhList));
         //pr.print(adhList);
+        }
+        
+        // ****************   Accepter Adherent  ****************//
+         if( process.equals("refuser") )
+        { 
+        PrintWriter pr = response.getWriter();
+        DAO.AdherentDAO.Adh_delete_ID(id_adherent);
+        LinkedList<Adherent> adhList = DAO.AdherentDAO.AdherentlisteAttente();
+        Gson J = new Gson();
+        pr.print(J.toJson(adhList));
+        //pr.print(adhList);
+        }
+        
+        // ****************  Update le profil d un adherent **************** //
+        if( process.equals("update"))
+        {
+           
+            Adherent adh = new Adherent(
+                Integer.parseInt(request.getParameter("id_adherent")),
+                request.getParameter("CodeAdherent"),
+                request.getParameter("NomAdherent"),
+                request.getParameter("CinAdherent"),
+                request.getParameter("ProfessionAdherent"),
+                request.getParameter("Login"),
+                request.getParameter("Passwd")
+                );
+            
+            DAO.AdherentDAO.Update_ID(adh);
+            
+               
+        }
+        
+        // ****************  Bloquer un adherent **************** //
+        if( process.equals("bloquer"))
+        {
+            DAO.AdherentDAO.BloquerAdherent(id_adherent);
+        }
+        // ****************  Debloquer un adherent **************** //
+        if( process.equals("debloquer"))
+        {
+            DAO.AdherentDAO.DebloquerAdherent(id_adherent);
+        
+        }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        
+                
         if (request.getParameter("sign_up") != null) {
             sign_up(request, response);
         } else if (request.getParameter("sign_in") != null) {

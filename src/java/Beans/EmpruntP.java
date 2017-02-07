@@ -15,7 +15,23 @@ public class EmpruntP {
     String nomBook;
     String DateSortie;
     String DateMax;
+    int idAdherent;
 
+    public EmpruntP(int idBook, int idAdherent) {
+        this.idBook = idBook;
+        this.idAdherent = idAdherent;
+    }
+
+    public EmpruntP( int idAdherent , int idBook, String nomBook, String DateSortie, String DateMax) {
+        this.idBook = idBook;
+        this.nomBook = nomBook;
+        this.DateSortie = DateSortie;
+        this.DateMax = DateMax;
+        this.idAdherent = idAdherent;
+    }
+
+    
+    
     public EmpruntP(int idBook, String nomBook, String DateSortie, String DateMax) {
         this.idBook = idBook;
         this.nomBook = nomBook;
@@ -53,6 +69,14 @@ public class EmpruntP {
 
     public void setDateMax(String DateMax) {
         this.DateMax = DateMax;
+    }
+
+    public int getIdAdherent() {
+        return idAdherent;
+    }
+
+    public void setIdAdherent(int idAdherent) {
+        this.idAdherent = idAdherent;
     }
     
     

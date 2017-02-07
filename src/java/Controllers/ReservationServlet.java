@@ -5,7 +5,9 @@
  */
 package Controllers;
 
+import Beans.EmpruntP;
 import Beans.Reservation;
+import Beans.ReservationP;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -33,22 +35,35 @@ public class ReservationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        System.out.println(request.getParameter("id_adherent"));
+        int id_adherent = Integer.parseInt(request.getParameter("id_adherent"));
+        int id_book =   Integer.parseInt(request.getParameter("id_book")) ;
+        String process = request.getParameter("process");
+        
+        if ( process.equals("valider"))
+        {
+           // Ajout de l emprunt 
+           DAO.EmpruntDAO.addEmprunt(new EmpruntP(id_book, id_adherent));
+           // Supression from Reservation
+           DAO.ReservationDAO.deleteReservation(new ReservationP(id_book, request.getParameter("date"), id_adherent));
+
+           response.sendRedirect("ReservationList.jsp");
+           
+            
+        } 
+        if ( process.equals("reserver"))
+        {
+        //ADD    
         DAO.ReservationDAO.addReservation(new Reservation(
-                Integer.parseInt(request.getParameter("id_book")), 
-                Integer.parseInt(request.getParameter("id_adherent"))));
-      //  response.sendRedirect("EspaceAdherent.jsp");
+                id_book, 
+                id_adherent));
+        // DECREMENTE NBRE RESERVATION 
+        DAO.ReservationDAO.Decremente_Book_Reservation(id_book);
+        response.sendRedirect("EspaceAdherent.jsp");
+        }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
+     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

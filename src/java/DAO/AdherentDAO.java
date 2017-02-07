@@ -128,6 +128,18 @@ public class AdherentDAO {
             return false;
         }
     }
+    
+   public static void Adh_delete_ID(int id_adherent) {
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            st.executeUpdate(Requests.Adh_del_ID(id_adherent));
+       
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+           
+        }
+    }
+
 
     public static boolean Adh_delete_CIN(String CIN) {
         try {
@@ -149,6 +161,18 @@ public class AdherentDAO {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+    
+     public static boolean Update_ID(Adherent Adh) {
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            st.executeUpdate(Requests.Adh_Update_By_ID(Adh));
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
     }
 
     public static boolean Update_CIN(Adherent Adh) {
@@ -174,6 +198,24 @@ public class AdherentDAO {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             st.executeUpdate(Requests.Adherent_Accepte(id_adh));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void BloquerAdherent(int id_adh) {
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            st.executeUpdate(Requests.Adherent_Bloquer(id_adh));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+      public static void DebloquerAdherent(int id_adh) {
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            st.executeUpdate(Requests.Adherent_Debloquer(id_adh));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -215,15 +257,24 @@ public class AdherentDAO {
             e.printStackTrace();
             return null;
         }
-
     }
+    
+       public static Integer selectCountAdherentEnAttente() {
+            Integer c = 0;
+            try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.SelectCountAdherentAttente());
+            res.next();
+            c = res.getInt(1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+            return c;
+        } 
 
     public static void main(String[] arg) {
 
-        for (int i = 0; i <= 500; i++) {
-            Adh_Add(new Adherent(new Integer(i).toString(), new Integer(i).toString(), new Integer(i).toString(), new Integer(i).toString(), new Integer(i).toString()));
-        }
-
+        System.out.println(selectCountAdherentEnAttente());
     }
 
 }
