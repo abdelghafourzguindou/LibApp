@@ -50,7 +50,7 @@
                     
                     <div class="panel-heading">
                         
-                      <h4 class="well_titre_2"> Liste des Livres</h4>
+                      <h4 class="well_titre_2"> Liste des Adherents</h4>
                       
                     
                         </div>
@@ -146,12 +146,13 @@
      <!-- DATA TABLE SCRIPTS -->
  
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-
+    
          <!-- CUSTOM SCRIPTS -->
          <!--script src="assets/js/custom.js"></script-->
        <script src="js/ControlAdherent.js" ></script>
-       <script src="assets/js/custom.js"></script>
+    
+       <!--script src="assets/js/custom.js"></script-->
 
-   
+       
 </body>
 </html>

@@ -33,7 +33,9 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
             </div>
             
         </nav>
-
-         <!--script src="js/jquery-1.6.1.min.js" type="text/javascript"></script>
-         <script type="text/javascript" src="js/ttw-simple-notifications-min.js"></script>    
-         <script type="text/javascript" src="js/Notification.js"></script-->
+        
+         <!--script type="text/javascript" src="js/ttw-simple-notifications-min.js"></script>    
+         <script type="text/javascript" src="js/Notification.js"></script>
+         
+         <script type="text/javascript" src=".js/jquery-1.6.1.min.js"></script>
+         <script> $113 = jQuery.noConflict();</script-->
