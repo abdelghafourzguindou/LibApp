@@ -98,6 +98,10 @@ public class Requests {
         return "select * from adherent where CIN='" + CIN + "' and CodeAdherent='" + CODE + "';";
     }
     
+    public static String Adh_Etat(int idAdherent) {
+        return "select etatAdherent from adherent where idAdherent='" + idAdherent +"';";
+    }
+
     // ************************ LES REQUETES DE L'ADMIN ************************//
     
     public static String AdminExist(String name , String passwd) {
@@ -190,8 +194,7 @@ public class Requests {
     public static String SelectCountReservation() {
         return " select count(*) from Reservation";
     }
-    
-    
+
     //Statistique
     public static String SelectCountBook() {
         return " select count(*) from Book";

@@ -17,8 +17,10 @@
      <!-- TABLE STYLES-->
      <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/jquery.bootpop.css">
-        
-       
+
+        <link href="css/stylePopup.css" rel="stylesheet" type="text/css">
+          
+
          <!-- CUSTOM SCRIPTS -->
     
     

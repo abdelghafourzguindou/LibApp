@@ -25,16 +25,19 @@ public class ReservationDAO {
             System.out.println(e.getMessage());
         }
     }
+    
+    public static ArrayList<ReservationP> getAll()
+    {
+         ArrayList<ReservationP> li_Res = null;
 
-    public static ArrayList<ReservationP> getAll() {
-        ArrayList<ReservationP> li_Res = null;
         try {
             li_Res = new ArrayList<ReservationP>();
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             ResultSet res = st.executeQuery(Requests.Reservation_All_Reservation());
             while (res.next()) {
 
-                li_Res.add(new ReservationP(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5), res.getString(6), res.getString(7)));
+                li_Res.add(new ReservationP(res.getInt(1),res.getString(2), res.getString(3), res.getInt(4) , res.getString(5) , res.getString(6) , res.getString(7)));
+                   
 
             }
         } catch (Exception e) {
@@ -42,8 +45,10 @@ public class ReservationDAO {
         } finally {
             return li_Res;
 
-        }
+            
+        } 
     }
+    
 
     public static void deleteReservation(ReservationP r) {
         try {
@@ -54,7 +59,9 @@ public class ReservationDAO {
         }
     }
 
-    public static void Decremente_Book_Reservation(int id_book) {
+    
+     public static void Decremente_Book_Reservation(int id_book ) {
+
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             st.executeUpdate(Requests.Reservation_Decrementation(id_book));
@@ -75,6 +82,7 @@ public class ReservationDAO {
         }
         return c;
     }
+
 
     public static void main(String[] str) {
 

@@ -5,6 +5,7 @@
  */
 $(document).ready(function () {
     
+
     
     refrechDatable();
  
@@ -14,6 +15,7 @@ $(document).ready(function () {
 
 
 });
+
 
 
 
@@ -42,7 +44,6 @@ function accepter_adh(id_adherent)
                     $(".table-responsive").html(html);
                     refrechDatable();
                     
-
     // ACCEPTER ADHERENT
 
                },
@@ -156,6 +157,7 @@ function refrechDatable()
     
     $(".RefuserAdh").click(function(){ var id_adherent = $(this).attr("id");
 
+
        Bootpop.ask('Voulez vous vraiment le refuser?', {
             title: 'Confirmation',
             size: 'small',
@@ -178,6 +180,7 @@ function refrechDatable()
         });
     
     });
+
 
 
 }

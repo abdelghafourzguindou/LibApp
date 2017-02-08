@@ -35,6 +35,7 @@
                     <div class="column">
                     <div class="row col-md-12">
                     
+
                     <br><span class="">Code du livre</span>
                     <span class="mini_tabulation"><input class="form-control" name="codeBook"/><!-- if(isset($_POST['codeBook'])) echo'value="'.$_POST['codeBook'].'" ';-->
                     </span><br/>
@@ -94,8 +95,7 @@
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.9.1.js"></script>
-
+        <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="assets/js/bootstrap.min.js"></script>
 

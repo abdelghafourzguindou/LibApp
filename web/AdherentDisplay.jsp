@@ -87,10 +87,12 @@
 
                     <div class="row">
 
+
+                 
                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                
                         <a href="#" class="btn btn-warning btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12 "><span class="glyphicon glyphicon-retweet icon_in_button" aria-hidden="true"></span>Prolonger </a>
-               
+
                 </div>
 
                 <%
@@ -224,9 +226,9 @@
 
 
 
-                        <!-- JQUERY SCRIPTS -->
-                        <script src="js/jquery-1.10.2.js"></script>
-                        <!-- BOOTSTRAP SCRIPTS -->
+
+        <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+
                         <script src="js/bootstrap.min.js"></script>
                         <!-- METISMENU SCRIPTS -->
                         <script src="assets/js/jquery.metisMenu.js"></script>

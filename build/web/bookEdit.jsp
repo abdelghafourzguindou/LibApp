@@ -45,6 +45,7 @@
                     </h4>
                     <div class="row col-md-8">
                     <div class="column">
+
                     <div class="row col-md-12">
                         <br>
                     <span>Code du livre:</span>
@@ -61,6 +62,7 @@
                     <br><span class="">Date de parution du livre</span>
                     <span class="mini_tabulation"><input class="form-control"   name="date" id="date" value="<%= b.getDateParution() %>" />
                     <br><span class="">Nombre de copies du livre</span>
+
                     <span class="mini_tabulation"><input class="form-control" name="nombreCopieBook"  value="<%= b.getNombreCopieBook() %>"/>
                     </span><br/>
 
@@ -103,8 +105,7 @@
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.9.1.js"></script>
-
+        <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="assets/js/bootstrap.min.js"></script>
     

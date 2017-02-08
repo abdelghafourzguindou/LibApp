@@ -44,8 +44,7 @@ public class AdherentProcess extends HttpServlet {
      */
     private void sign_up(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
-
-        DAO.AdherentDAO.Adh_Add(new Adherent(
+        Adherent adherent = new Adherent(
                 request.getParameter("CodeAdh"),
                 request.getParameter("CINAdh"),
                 request.getParameter("NomAdh"),
@@ -54,8 +53,11 @@ public class AdherentProcess extends HttpServlet {
                 0,
                 request.getParameter("LoginAdh"),
                 request.getParameter("PasswordAdh")
-        ));
-        response.sendRedirect("indexAdherent.jsp");
+        );
+        DAO.AdherentDAO.Adh_Add(adherent);
+        HttpSession session = request.getSession(true);
+        session.setAttribute("currentAdherent", adherent);
+        response.sendRedirect("EspaceAdherent.jsp");
     }
 
     private void sign_in(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -72,9 +74,9 @@ public class AdherentProcess extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("currentAdherent", adh);
            
-            request.getRequestDispatcher("Livre_List_Adherent.jsp").forward(request, response);
-            
-        } else {
+            request.getRequestDispatcher("EspaceAdherent.jsp").forward(request, response);            
+        } else 
+        {
             response.sendRedirect("indexAdherent.jsp");
         }
     }
@@ -137,7 +139,16 @@ public class AdherentProcess extends HttpServlet {
         {
             DAO.AdherentDAO.DebloquerAdherent(id_adherent);
         
+        }      
+        // ******* CHECK ETAT QUAND L AUTHENTIFICATION DE L ADHERENT
+        if( process.equals("checkETAT"))
+        {
+            int etatAdherent = DAO.AdherentDAO.getEtat(id_adherent);
+            System.out.println(etatAdherent); 
+            response.getWriter().print(etatAdherent);
         }
+        
+
     }
 
 

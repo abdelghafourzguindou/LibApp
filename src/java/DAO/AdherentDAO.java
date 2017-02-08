@@ -122,6 +122,9 @@ public class AdherentDAO {
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             st.executeUpdate(Requests.Adh_Add(Adh));
+            ResultSet res = st.executeQuery("select max(idAdherent) from adherent");
+            res.next();
+            Adh.setIdAdherent(res.getInt(1));
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -258,7 +261,19 @@ public class AdherentDAO {
             return null;
         }
     }
-    
+        public static int getEtat(int id_adherent) {
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.Adh_Etat(id_adherent));
+            res.next();
+            return res.getInt(1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return -1;
+        } 
+    }
+
+
        public static Integer selectCountAdherentEnAttente() {
             Integer c = 0;
             try {

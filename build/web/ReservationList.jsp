@@ -134,8 +134,8 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     
-    <script src="assets/js/jquery-1.10.2.js"></script>
-   
+        <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+
       <!-- BOOTSTRAP SCRIPTS -->
       <script src="assets/js/bootstrap.min.js"></script>   
     
@@ -149,9 +149,7 @@
 
          <!-- CUSTOM SCRIPTS -->
          <!--script src="assets/js/custom.js"></script-->
-       <script src="js/ControlAdherent.js" ></script>
        <script src="assets/js/custom.js"></script>
 
-   
 </body>
 </html>

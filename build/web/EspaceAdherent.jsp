@@ -6,22 +6,44 @@
 <html>
 
     <head>
+        
         <%@include file="page_elements/header.jsp" %>
         
+        <link href="css/win.css" rel="stylesheet">
+
+        <style>
+            
+.s
+{
+  background-color: #000;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  z-index: 50;
+  display: none
+}
+
+        </style>
 
     </head>
     <body>
+        
         <div id="wrapper">
 
             <%@include file="page_elements/navbarAdherent.jsp" %> 
 
             <!-- /. NAV SIDE  -->
 
-            <% Adherent currentAdherent = (Adherent) request.getAttribute("CurrentAdherent");%>
-
+         
             <div id="page-wrapper" >
                 <div id="page-inner">
-
+                    
+                    
+        
+      
                     
 
                     
@@ -40,22 +62,12 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
 
-    <script src="assets/js/jquery-1.10.2.js"></script>
+       <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.min.js"></script>
+         <script src="assets/js/bootstrap.min.js"></script>
 
-    <script src="js/jquery.bootpop.js" ></script>
-    <!-- METISMENU SCRIPTS -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
-    <!-- DATA TABLE SCRIPTS -->
-    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-
-    <script type="text/javascript" src="dist/demo.js"></script>
-    <script src="js/ControlBook.js" ></script>
-
-    <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
+         <!--script type="text/javascript" src="js/ttw-simple-notifications-min.js"></script>    
+         <script type="text/javascript" src="js/Notification.js"></script--> 
 
 
 </body>
