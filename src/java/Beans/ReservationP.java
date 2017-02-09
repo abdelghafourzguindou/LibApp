@@ -34,6 +34,14 @@ public class ReservationP {
         this.DateReservation = DateReservation;
         this.idAdherent = idAdherent;
     }
+
+    public ReservationP(int idBook, String nomBook, int idAdherent, String CIN, String nomAdherent) {
+        this.idBook = idBook;
+        this.nomBook = nomBook;
+        this.idAdherent = idAdherent;
+        this.CIN = CIN;
+        this.nomAdherent = nomAdherent;
+    }
     
     
 

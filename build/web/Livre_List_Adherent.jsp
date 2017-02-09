@@ -1,3 +1,4 @@
+<%@page import="DAO.EmpruntDAO"%>
 <%@page import="DAO.BookDAO"%>
 <%@page import="Beans.Book"%>
 <%@page import="java.util.ArrayList"%>
@@ -60,7 +61,7 @@
                                                         <th>Genre du livre</th>
                                                         <th>Date d'apparution</th>
                                                         <th>Nombre de copies disponibles</th>                                                            
-                                                        <th><center>Reserver un Livre</center></th>
+                                                        
                                                 
 
 
@@ -71,7 +72,7 @@
                                                     <!-- foreach (Livre L: Liste_Livres -->
                                                     
                                                        
-                                                    <%  ArrayList<Book> li = BookDAO.getAll();
+                                                    <%  LinkedList<Book> li = EmpruntDAO.getLivreAujourdui(AD.getIdAdherent());
                                                        for ( Book bk : li ) {  %>  
                                                 <tr>
                                                       <td>
@@ -85,17 +86,7 @@
                                                             <td><%=bk.getCategorieBook() %></td>
                                                             <td><%=bk.getDateParution() %></td>
                                                             <td><%=bk.getNombreCopieBook() %></td>
-                                                            <td>
-                                                            <center>
-                                                            <%if(bk.getNombreCopieBook()==0){%>
-                                                               <input disabled type="button" class="Reservation btn btn-success" value="Reserver">
-                                                            <% }else{ %> 
-                                                                <a href="ReservationServlet?process=reserver&id_book=<%=bk.getIdBook()%>&id_adherent=<%=currentAdherent.getIdAdherent()%>" > 
-                                                                    <input  type="button" class="Reservation btn btn-success" value="Reserver">
-                                                                </a>
-                                                            <% } %>
-                                                            </center>
-                                                            </td>
+                                                     
                                                 </tr>
                                                 <% } %>
 
@@ -114,7 +105,14 @@
             </div
         </div>
     </div>
-               
+       
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
     </div>
 </div>
              <!-- /. PAGE INNER  -->

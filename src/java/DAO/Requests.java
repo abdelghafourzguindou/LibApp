@@ -140,6 +140,16 @@ public class Requests {
         return "insert into emprunt values('" + P.getIdBook() + "', '" + P.getIdAdherent() + "', '" + new SimpleDateFormat("YYYY-MM-dd").format(new Date()) + "',null , now() + INTERVAL 20 DAY);";
     }
     
+    public static String Emprunt_getLivre_Aujourdui(int id_adherent)
+    {
+        return "select idBook from emprunt where IdAdherent = '" + id_adherent + "' AND DateMax = '" + new SimpleDateFormat("YYYY-MM-dd").format(new Date()) + "' ;";
+    }
+    
+     public static String Emprunt_getLivre_Aujourdui()
+    {
+        return "select * from emprunt where DateMax = '" + new SimpleDateFormat("YYYY-MM-dd").format(new Date()) + "' ;";
+    }
+    
     
     //  ************************  CONSULTATION DES STATUS DES ADHERENTS ************************//
     
@@ -183,7 +193,7 @@ public class Requests {
     
     public static String Reservation_Delete(ReservationP R)
     {
-        return "delete from reservation where idBook = '" + R.getIdBook() + "' AND IdAdherent = '" + R.getIdAdherent() + "' AND Date like '%" + R.getDateReservation() + "%';";
+               return "delete from reservation where idBook = '" + R.getIdBook() + "' AND IdAdherent = '" + R.getIdAdherent() + "' AND Date like '%" + R.getDateReservation() + "%';";
     }
     
     public static String Reservation_Decrementation(int id_book)

@@ -135,7 +135,7 @@
                                     <td class="text-center"> <%=Emp.getIdBook() %> </td>
                                     <td class="text-center"> <%=Emp.getNomBook() %></td>
                                     <td class="text-center"><%=Emp.getDateSortie() %></td>
-                                    <td class="text-center"><%=Emp.getDateMax() %></td>
+                                    <td class="dateMax text-center" id="<%=Emp.getIdBook() %>" ><%=Emp.getDateMax() %></td>
                                   <tr>
                                    
 
@@ -183,7 +183,7 @@
                                    
                                   <tr>
                                    
-
+           
                                 <% } } %>
 
                                 </tbody>

@@ -1,15 +1,17 @@
 var audioElement ;
+var nomAdherent ;
 var exETAT ;
- $(document).ready(function () {  
-     
+ $(document).ready(function () { 
      audioElement = document.createElement('audio');
      audioElement.setAttribute('src', 'sounds/sumsumg.mp3');
      exETAT = $("#ETATADHERENT").val();
-     // checkFirstState();
+     nomAdherent = $("#NOMADHERENT").val();
+     checkFirstState();
      audioElement.addEventListener("canplay",function(){  
      });   
-     window.setInterval(function(){ checkState(); } , 3000); 
-     
+     window.setInterval(function(){ 
+         checkState();      
+    } , 3000); 
  });
  
  
@@ -38,6 +40,7 @@ var exETAT ;
 
  function checkState()
  {
+  
    id_adherent = $("#IDADHERENT").val();
     $.ajax
             ({
@@ -62,7 +65,7 @@ var exETAT ;
                     if(reponse == 0)
                         {
                            $(".normal").hide();
-                           $(".ss").append("HELLO kkqksKQS");
+                           $(".ss").text('Bonjour '+nomAdherent+' : vous devez attendre l\'acceptation par l\'administrateur ');
                            $(".s").show();
                           // alert('EN ATTENTE');
                         }
@@ -70,7 +73,7 @@ var exETAT ;
                     if(reponse == 2)
                         {
                            $(".normal").hide();
-                           $(".s").append("HELLO kkqksKQS");
+                           $(".ss").text('Bonjour '+ nomAdherent+ ' : Malheureusement vous êtes bloqué par l\'administrateur , Contactez le pour plus d\'information ');
                            $(".s").show();
                           // alert('BLOQUE');
                         }
@@ -100,6 +103,7 @@ var exETAT ;
                         if(exETAT == 0)
                         {
                            $(".normal").hide();
+                           $(".ss").text('Bonjour '+nomAdherent+' : EN ATTENTE');
                            $(".s").show();
                           // alert('EN ATTENTE');
                         }
@@ -107,6 +111,7 @@ var exETAT ;
                     if(exETAT == 2)
                         {
                            $(".normal").hide();
+                           $(".ss").text('Bonjour '+ nomAdherent+ ' : BLOQUE ');
                            $(".s").show();
                           // alert('BLOQUE');
                         }

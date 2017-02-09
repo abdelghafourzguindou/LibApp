@@ -35,12 +35,10 @@
     <body>
         <% Adherent currentAdherent = (Adherent)request.getSession().getAttribute("currentAdherent"); %>
         <input hidden id="ETATADHERENT" value="<%=currentAdherent.getEtatAdherent() %>" />
-        
         <input hidden id="IDADHERENT" value="<%=currentAdherent.getIdAdherent()%>" />
        
         <div class="s">
-            <div class="ss">
-  		</div>
+            <div class="ss"> TTT </div>
                 <div class="windows8">
 			<div class="wBall" id="wBall_1">)
 				<div class="wInnerBall"></div>

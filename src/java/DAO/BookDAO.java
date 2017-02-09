@@ -95,7 +95,7 @@ public class BookDAO {
             b = new Book(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getInt(6),res.getString(7));
             b.setIdBook(id_book);
         } catch (Exception e) {
-            e.printStackTrace();
+             System.out.println(e.getMessage());
         } finally {
             return b;
         }

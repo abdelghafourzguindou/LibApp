@@ -6,8 +6,10 @@
 package DAO;
 
 import Beans.Adherent;
+import Beans.Book;
 import Beans.EmpruntP;
 import Beans.Reservation;
+import Beans.ReservationP;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -119,4 +121,55 @@ public class EmpruntDAO {
         }
         return c;
     }
+    
+    public static LinkedList<Book> getLivreAujourdui(int id_adherent)
+    {
+            LinkedList<Book> li = new LinkedList<Book>();
+        try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.Emprunt_getLivre_Aujourdui(id_adherent));
+            while(res.next())
+            {
+             li.add( DAO.BookDAO.getBook(res.getInt(1)));
+                
+            }
+        } catch (Exception e) {
+            System.out.println("----"+e.getMessage());
+            return li;
+        }
+          return li;
+    }
+    
+      public static ArrayList<ReservationP> getLivreAujourdui()
+    {
+           int id_adherent , id_book;
+           Adherent A ;
+           ArrayList<ReservationP> li = new ArrayList<ReservationP>();
+       try {
+            Statement st = Factory.ConnectionFactory.getConnection().createStatement();
+            ResultSet res = st.executeQuery(Requests.Emprunt_getLivre_Aujourdui());
+            while(res.next())
+            {
+               id_book = res.getInt(1);
+               id_adherent = res.getInt(2);
+               A = DAO.AdherentDAO.Adh_Id(id_adherent);
+               li.add( new ReservationP(id_book, BookDAO.getBook(id_book).getTitreBook(), id_adherent,  new String(A.getCIN()) , new String(A.getNomAdherent()) ));
+                
+            }
+        } catch (Exception e) {
+            System.out.println("----"+e.getMessage());
+            return null;
+        }
+          return li;
+    }
+    
+
+    public static void main(String[] str)
+{
+for (ReservationP b : getLivreAujourdui())
+        System.out.println(b);
 }
+    
+    
+}
+
