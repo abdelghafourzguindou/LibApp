@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
     <title>Projet de gestion de bibliothèque</title>
 	<!-- BOOTSTRAP STYLES-->
 	<!-- BOOTSTRAP STYLES-->
@@ -22,7 +24,33 @@
           
 
          <!-- CUSTOM SCRIPTS -->
-    
+            
+        
+        <style>
+            
+.s
+{
+  background-color: #000;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  z-index: 50;
+  display: none
+}
+.ss{
+  position: relative;
+  top: 300;
+  width: 100%;
+  text-align: left;
+  font-size: 17;
+  font-family: 'CaviarDreams',arial;
+  text-align: center;
+  opacity: 1;
+}
+        </style>
     
   
     <!-- -->

@@ -7,7 +7,7 @@
 $(document).ready(function ()
 
 {
-
+      
     // Listener de la remise d un livre 
     $(".remettre").click(function () {
         var id_book = $(this).attr("id");
@@ -189,3 +189,4 @@ function blocage(idAdherent,type)
             }); 
             
 }
+

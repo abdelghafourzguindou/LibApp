@@ -41,32 +41,17 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
     </div>
 
 </nav>
-        
-        
-        <style>
-            
-.s
-{
-  background-color: #000;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 100%;
-  height: 100%;
-  opacity: 0.9;
-  z-index: 50;
-  display: none
-}
 
-        </style>
         
         <input hidden id="ETATADHERENT" value="<%=AD.getEtatAdherent() %>" />
         <input hidden id="IDADHERENT" value="<%=AD.getIdAdherent()%>" />
+         <input hidden id="NOMADHERENT" value="<%=AD.getNomAdherent() %>" />
+
         
         
            <div class="s">
-            <div class="ss">
-  		</div>
+                              <div class="ss" style="display:block"></div>
+
                 <div class="windows8">
 			<div class="wBall" id="wBall_1">)
 				<div class="wInnerBall"></div>

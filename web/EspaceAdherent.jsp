@@ -1,3 +1,5 @@
+<%@page import="DAO.EmpruntDAO"%>
+<%@page import="Beans.ReservationP"%>
 <%@page import="DAO.BookDAO"%>
 <%@page import="Beans.Book"%>
 <%@page import="java.util.ArrayList"%>
@@ -12,19 +14,8 @@
         <link href="css/win.css" rel="stylesheet">
 
         <style>
-            
-.s
-{
-  background-color: #000;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 100%;
-  height: 100%;
-  opacity: 0.9;
-  z-index: 50;
-  display: none
-}
+
+
 
         </style>
 
@@ -39,7 +30,91 @@
 
          
             <div id="page-wrapper" >
-                <div id="page-inner">
+                  <% Adherent currentAdherent = (Adherent)request.getSession().getAttribute("currentAdherent"); %>
+
+                 
+                 
+                 <div class="row">
+                      <!-- Ajouter Livre -->
+                 
+                <div class="col-md-12">
+                
+               
+                    
+                <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                    
+                    <div class="panel-heading">
+                        
+                      <h4 class="well_titre_2"> Liste des livres à remettre aujourd'hui</h4>
+                      
+                    
+                        </div>
+                        <div class="panel-body">
+                             <div id="page-inner">
+                                 
+                                                                 
+                                         <div class="form-group input-group">
+                                            <input type="text" class="form-control" id="myInputTextField">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                            <div class="table-responsive">
+                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                                           
+                                                        <th>|</th>
+                                                        <th>Titre du livre</th>
+                                                        <th>Auteur du livre</th>
+                                                        <th>Genre du livre</th>
+                                                        <th>Date d'apparution</th>
+                                                        <th>Nombre de copies disponibles</th>                                                            
+                                                
+
+
+                                        </tr>
+                                    </thead>
+                                                    <tbody>
+                                                    <!-- nb_forms=0 -->
+                                                    <!-- foreach (Livre L: Liste_Livres -->
+                                                    
+                                                       
+                                                    <%  LinkedList<Book> li = EmpruntDAO.getLivreAujourdui(currentAdherent.getIdAdherent());
+                                                       for ( Book bk : li ) {  %>  
+                                                <tr>
+                                                      <td>
+                                                                <i class="glyphicon glyphicon-book icon_in_button"></i>
+                                                            </td>
+                                                            <!-- normalement id="form.'nb_forms'."-->
+
+
+                                                            <td><%=bk.getTitreBook() %></td>
+                                                            <td><%=bk.getAuteurBook() %></td>
+                                                            <td><%=bk.getCategorieBook() %></td>
+                                                            <td><%=bk.getDateParution() %></td>
+                                                            <td><%=bk.getNombreCopieBook() %></td>
+                                                </tr>
+                                                <% } %>
+
+                                                        <!-- nb_forms++; -->
+                                                    <!-- fin foreach -->
+                                                        
+                                                        
+                                 </tbody>
+                                                </table>
+                                         </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div
+        </div>
+    </div>
+       
                     
                     
         

@@ -1,4 +1,12 @@
-<%@page import="DAO.EmpruntDAO"%>
+<%-- 
+    Document   : LivreAujourdui
+    Created on : 8 févr. 2017, 23:26:10
+    Author     : l.IsSaM.l
+--%>
+
+<%@page import="Beans.ReservationP"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@page import="DAO.BookDAO"%>
 <%@page import="Beans.Book"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,21 +15,24 @@
 <html>
 <head>
 <%@include file="page_elements/header.jsp" %>
-
+<style>
+    .pagination .paginate_button a.paginate_button {
+    color: #fffff !important;
+}
+.paging_full_numbers a.paginate_active {
+    color: #fff !important;
+}
+</style>
    </head>
 <body>
     <div id="wrapper">
   
-        <%@include file="page_elements/navbarAdherent.jsp" %> 
+      <%@include file="page_elements/navbar.jsp" %> 
         
       
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
            
-                
-            <% Adherent currentAdherent = (Adherent)request.getSession().getAttribute("currentAdherent"); %>
-
-                 
                  
                  <div class="row">
                       <!-- Ajouter Livre -->
@@ -35,7 +46,7 @@
                     
                     <div class="panel-heading">
                         
-                      <h4 class="well_titre_2"> Liste des livres</h4>
+                      <h4 class="well_titre_2"> Livres d'aujourd'hui</h4>
                       
                     
                         </div>
@@ -54,15 +65,13 @@
                                  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                                           
-                                                        <th></th>
-                                                        <th>Titre du livre</th>
-                                                        <th>Auteur du livre</th>
-                                                        <th>Genre du livre</th>
-                                                        <th>Date d'apparution</th>
-                                                        <th>Nombre de copies disponibles</th>                                                            
-                                                        
-                                                
+                                                            <th>|</th>
+                                                            <th>Id book</th>
+                                                            <th>Nom book</th>
+                                                            <th>Id Adherent</th>
+                                                            <th>CIN </th>
+                                                            <th>Nom adherent</th>
+                                                            <th>Prenom</th>
 
 
                                         </tr>
@@ -72,21 +81,22 @@
                                                     <!-- foreach (Livre L: Liste_Livres -->
                                                     
                                                        
-                                                    <%  LinkedList<Book> li = EmpruntDAO.getLivreAujourdui(AD.getIdAdherent());
-                                                       for ( Book bk : li ) {  %>  
+                                                     <%  ArrayList<ReservationP> li = DAO.EmpruntDAO.getLivreAujourdui();
+                                                       for ( ReservationP Em : li ) {  %>   
                                                 <tr>
-                                                      <td>
-                                                                <i class="glyphicon glyphicon-book icon_in_button"></i>
-                                                            </td>
-                                                            <!-- normalement id="form.'nb_forms'."-->
-
-
-                                                            <td><%=bk.getTitreBook() %></td>
-                                                            <td><%=bk.getAuteurBook() %></td>
-                                                            <td><%=bk.getCategorieBook() %></td>
-                                                            <td><%=bk.getDateParution() %></td>
-                                                            <td><%=bk.getNombreCopieBook() %></td>
-                                                     
+                                                     <td>
+                                                            <i class="glyphicon glyphicon-book icon_in_button"></i>
+                                                     </td>
+                                                        <!-- normalement id="form.'nb_forms'."-->
+                                                          
+                                                   
+                                                        <td><%=Em.getIdBook() %></td>
+                                                        <td><%=Em.getNomBook() %></td>
+                                                        <td><%=Em.getIdAdherent() %></td>
+                                                        <td><%=Em.getCIN() %></td>
+                                                        <td><%=Em.getNomAdherent() %></td>
+                                                        <td><%=Em.getPrenomAdherent() %></td>
+                                                        
                                                 </tr>
                                                 <% } %>
 
@@ -105,14 +115,7 @@
             </div
         </div>
     </div>
-       
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
+               
     </div>
 </div>
              <!-- /. PAGE INNER  -->
@@ -122,8 +125,7 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     
-    <script src="assets/js/jquery-1.10.2.js"></script>
-   
+        <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
       <!-- BOOTSTRAP SCRIPTS -->
       <script src="assets/js/bootstrap.min.js"></script>   
     
@@ -136,7 +138,6 @@
 
          <!-- CUSTOM SCRIPTS -->
          <!--script src="assets/js/custom.js"></script-->
-         <script src="js/ControlAdherent.js" ></script>
    
 </body>
 </html>

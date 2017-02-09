@@ -47,6 +47,13 @@
 			    
                         </ul>
                       </li>  
+                      
+                      
+                      <li>
+                        <a href="LivrableProcess"><i class="glyphicon glyphicon-time"></i>Livre D'aujourd'hui<span class="fa arrow"></span></a>
+                       
+                      </li>  
+                      
 		<!-- Fin de balise de réservation-->
 
               
