@@ -5,7 +5,7 @@ var exETAT ;
      audioElement = document.createElement('audio');
      audioElement.setAttribute('src', 'sounds/sumsumg.mp3');
      exETAT = $("#ETATADHERENT").val();
-     // checkFirstState();
+     checkFirstState();
      audioElement.addEventListener("canplay",function(){  
      });   
      window.setInterval(function(){ checkState(); } , 3000); 

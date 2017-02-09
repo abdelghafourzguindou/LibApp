@@ -3,9 +3,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="Beans.Adherent"%>
+
 <html>
 <head>
 <%@include file="page_elements/header.jsp" %>
+
 <style>
     .pagination .paginate_button a.paginate_button {
     color: #fffff !important;
@@ -95,35 +97,33 @@
                                         </tr>
                                     </thead>
                                                     <tbody>
-                                                    <!-- nb_forms=0 -->
-                                                    <!-- foreach (Livre L: Liste_Livres -->
                                                     
-                                                       
-                                                    <%  ArrayList<Book> li = BookDAO.getAll();
-                                                       for ( Book bk : li ) {  %>   
-                                                <tr>
-                                                     <td>
-                                                            <i class="glyphicon glyphicon-book icon_in_button"></i>
-                                                     </td>
-                                                        <!-- normalement id="form.'nb_forms'."-->
-                                                          
-                                                   
-                                                        <td><%=bk.getTitreBook() %></td>
-                                                        <td><%=bk.getAuteurBook() %></td>
-                                                        <td><%=bk.getCategorieBook() %></td>
-                                                        <td><%=bk.getDateParution() %></td>
-                                                        <td><center><%=bk.getNombreCopieBook() %></center></td>
-                                                        <td>
-                                                    <center><a href="books?process=modifier&id_book=<%=bk.getIdBook()%>" > <input type="button" class="modification btn btn-success" id="<%=bk.getIdBook()%>" value="Modifier"></a> </center>
-                                                        </td>
-                                                        <td>
-                                                        <center> <input type="button" class="suppression  btn btn-success " id="<%=bk.getIdBook()%>" style="border-color:#d2322d;background-color:#d2322d;" value="Supprimer"></center>
-                                                        </td>
-                                                </tr>
-                                                <% } %>
+                                                      <printer:forEach items="${ListBook}" var="bk">
+                                                        
+                    
+                                                        
+                                                        <tr>
+                                                            <td>
+                                                                <i class="glyphicon glyphicon-book icon_in_button"></i>
+                                                            </td>
+                                                            <!-- normalement id="form.'nb_forms'."-->
 
-                                                        <!-- nb_forms++; -->
-                                                    <!-- fin foreach -->
+
+                                                            <td>${bk.getTitreBook()}</td>
+                                                            <td>${bk.getAuteurBook()}</td>
+                                                            <td>${bk.getCategorieBook()}</td>
+                                                            <td>${bk.getDateParution()}</td>
+                                                            <td>${bk.getNombreCopieBook()}</td>
+                                                            <td>
+                                                    <center><a href="books?process=modifier&id_book=${bk.getIdBook()}" > <input type="button" class="modification btn btn-success" id="${bk.getIdBook()}" value="Modifier"></a> </center>
+                                                    </td>
+                                                    <td>
+                                                    <center> <input type="button" class="suppression  btn btn-success " id="${bk.getIdBook()}" style="border-color:#d2322d;background-color:#d2322d;" value="Supprimer"></center>
+                                                    </td>
+                                                    </tr>
+                                                  
+                                                            
+                                                            </printer:forEach>
                                                         
                                                         
                                  </tbody>

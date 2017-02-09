@@ -7,7 +7,7 @@
 <!-- Balise d'Livre-->
 				                   
                     <li>
-                        <a href="bookList.jsp"><i class="glyphicon glyphicon-book"></i>Espace de livre<span class="fa arrow"></span></a>
+                        <a href="books?process=getLivre"><i class="glyphicon glyphicon-book"></i>Espace de livre<span class="fa arrow"></span></a>
 
                       </li>  
 

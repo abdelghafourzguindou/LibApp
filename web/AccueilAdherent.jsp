@@ -3,7 +3,7 @@
     Created on : 6 févr. 2017, 19:31:36
     Author     : l.IsSaM.l
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="printer"%>
 <%@page import="Beans.Adherent"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,10 +33,13 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
         <% Adherent currentAdherent = (Adherent)request.getSession().getAttribute("currentAdherent"); %>
         <input hidden id="ETATADHERENT" value="<%=currentAdherent.getEtatAdherent() %>" />
         
         <input hidden id="IDADHERENT" value="<%=currentAdherent.getIdAdherent()%>" />
+        
+        
        
         <div class="s">
             <div class="ss">

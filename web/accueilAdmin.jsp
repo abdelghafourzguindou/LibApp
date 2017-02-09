@@ -3,7 +3,7 @@
     Created on : 3 févr. 2017, 23:03:21
     Author     : l.IsSaM.l
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="printer"%>
 <%@page import="DAO.BookDAO"%>
 <%@page import="Beans.Book"%>
 <%@page import="java.util.ArrayList"%>
@@ -75,6 +75,7 @@
 
                                                         <%  ArrayList<Book> li = BookDAO.getAll();
                                                         for (Book bk : li) {%>   
+                                                        
                                                         <tr>
                                                             <td>
                                                                 <i class="glyphicon glyphicon-book icon_in_button"></i>

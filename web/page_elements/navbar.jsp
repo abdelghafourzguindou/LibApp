@@ -1,5 +1,6 @@
 <%@page import="java.util.Date"%>
 <%@page import="Beans.User"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="printer"%>
 <!--
 Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin connecté, le "last acess" et la photo de l'admin aussi, cette derniere fait appel à la page "menu.php" qui, elle, contient le menu
 -->
@@ -22,7 +23,11 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
     <!------------------------------>
                             
     <!------------------------------>
-    <div style="color: white;padding: 15px 50px 5px 50px;float: left;font-size: 22px;">Bienvenue, monsieur  <% if (request.getSession(false) == null ) response.sendRedirect("index.jsp");   User u = (User)request.getSession().getAttribute("user"); System.out.println(u); %><span style="color: red;"> <%=u.getPrenom_admin().toUpperCase() %></span> </div>  
+    <div style="color: white;padding: 15px 50px 5px 50px;float: left;font-size: 22px;">Bienvenue, monsieur  
+        <span style="color: red;"> 
+            <printer:out value="${user.getPrenom_admin().toUpperCase()}"></printer:out>
+        </span>
+    </div>  
 <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> On est le <%=new Date().toString() %> &nbsp;<a href="identity?process=deconexion" class="btn btn-danger square-btn-adjust">D�connexion</a> </div>
         </nav>
 	<!-- ici c'est la fin de la barre du haut et commence la barre latérale (plus précisemment l'image de profil  -->

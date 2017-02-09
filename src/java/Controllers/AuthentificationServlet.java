@@ -60,8 +60,8 @@ public class AuthentificationServlet extends HttpServlet {
              user = UserDAO.getUser(userName, password);
              HttpSession session = request.getSession(true);
              session.setAttribute("user", user);
-             System.out.println(user);
-             request.getRequestDispatcher("bookList.jsp").forward(request, response);
+             
+             request.getRequestDispatcher("dashboard.jsp").forward(request, response);
         }
         else
         {
