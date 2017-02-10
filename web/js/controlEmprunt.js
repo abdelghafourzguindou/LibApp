@@ -103,7 +103,6 @@ function MidifierProfil(Adherent)
                 dataType: 'html',
                 data: "process=update&id_adherent="+Adherent.idAdherent+"&CodeAdherent="+Adherent.CodeAdherent+"&NomAdherent="+Adherent.NomAdherent+"&CinAdherent="+ Adherent.CinAdherent+"&ProfessionAdherent="+Adherent.ProfessionAdherent+"&Login="+Adherent.Login+"&Passwd="+Adherent.Passwd,
                 success: function (reponse) {
-                    alert("reponse");
                
                  
                 },

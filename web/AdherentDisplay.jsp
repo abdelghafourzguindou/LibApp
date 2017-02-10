@@ -65,11 +65,11 @@
                     <span class="">Profession</span><br>
                     <input class="Amodier form-control"  type="text"  id="ProfessionAdherent" disabled value="<%=adh.getProfessionAdherent()%>"><br>
  
-                    <span class="">Login adherent</span><br>
+                    <!--span class="">Login adherent</span><br>
                     <input class="Amodier form-control"  type="text" id="Login" disabled value="<%=adh.getLogin()%>"><br>
 
                     <span class="">Mot de passe adherent</span><br>
-                    <input class="Amodier form-control"  type="text" id="Passwd" disabled value="<%=adh.getPasswd()%>"><br>
+                    <input class="Amodier form-control"  type="text" id="Passwd" disabled value="<%=adh.getPasswd()%>"><br-->
 
                     </div></div>
                     <div class="row">

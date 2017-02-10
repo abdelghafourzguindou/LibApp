@@ -80,6 +80,7 @@
                                                             <th><center>Adherent:NOM</center></th>
                                                             <th><center>Adherent:PRENOM</center></th>
                                                             <th><center>CONFIRMER</center></th>
+                                                            <th><center>Annuler</center></th>   
                                                            
 
 
@@ -105,6 +106,10 @@
                                                      
                                                             <center><a href="ReservationServlet?process=valider&id_adherent=<%=ad.getIdAdherent() %>&id_book=<%=ad.getIdBook()%>&date=<%=ad.getDateReservation()%>"><input type="button" class="ConfirmerRerservation btn btn-success" id="<%=ad.getIdAdherent() %>" value="Confirmer"></a> </center>
                                                     </td>
+                                                     <td>
+                                                       <center><a href="ReservationServlet?process=annuler&from=admin&id_adherent=<%=ad.getIdAdherent() %>&id_book=<%= ad.getIdBook() %>"><input type="button" class="ConfirmerRerservation btn btn-success" value="Annuler"></a> </center>
+
+                                                            </td>
                                                    
                                                 </tr>
                                                 <% } %>

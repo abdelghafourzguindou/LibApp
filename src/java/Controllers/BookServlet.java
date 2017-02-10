@@ -78,7 +78,9 @@ String str = "<table class=\"table table-striped table-bordered table-hover\" id
             System.out.println(request.getParameter("date"));
              
             BookDAO.addBook(new Book(request.getParameter("codeBook"),request.getParameter("titreBook"),request.getParameter("categorieBook"), request.getParameter("auteurBook"),Integer.parseInt(request.getParameter("nombreCopieBook")) , request.getParameter("date") ));
-            response.sendRedirect("bookList.jsp");
+            ArrayList<Book> liste = BookDAO.getAll();
+            request.setAttribute("ListBook", liste);
+            request.getRequestDispatcher("bookList.jsp").forward(request, response);
          }
          // Demande de récupérer les info
          else if (process.equalsIgnoreCase("modifier"))
@@ -92,11 +94,15 @@ String str = "<table class=\"table table-striped table-bordered table-hover\" id
          else if (process.equalsIgnoreCase("update"))
          {
              long id_book = Long.parseLong(request.getParameter("id_book"));
+             
              Book b = new Book(request.getParameter("codeBook"),request.getParameter("titreBook"),request.getParameter("categorieBook"), request.getParameter("auteurBook"),Integer.parseInt(request.getParameter("nombreCopieBook")) , request.getParameter("date") );
              b.setIdBook(id_book);
              System.out.println("------------"+b);
              DAO.BookDAO.updateBook(b);
-             response.sendRedirect("bookList.jsp");
+             ArrayList<Book> liste = BookDAO.getAll();
+             request.setAttribute("ListBook", liste);
+             request.getRequestDispatcher("bookList.jsp").forward(request, response);
+             
          }
          else {
             ArrayList<Book> liste = BookDAO.getAll();

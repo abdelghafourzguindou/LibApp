@@ -15,6 +15,11 @@ public class Requests {
     public static String Book_All() {
         return "select * from Book;";
     }
+    
+     public static String Book_Adherent(int id_adherent) {
+         System.out.println("select * from Book where idBook not in ( select idBook from reservation where idAdherent = '" +id_adherent+ "');");
+        return "select * from Book where idBook not in ( select idBook from reservation where idAdherent = '" +id_adherent+ "');";
+    }
 
     public static String Book_CodeBook(String Code) {
         return "select * from Book where CodeBook = '" + Code + "';";
@@ -40,7 +45,7 @@ public class Requests {
         return "update Book set CodeBook = '"  + b.getCodeBook()
                 + "',titreBook = '"  + b.getTitreBook()
                 + "',auteurBook = '"  + b.getAuteurBook()
-                + "',CategorieBook = '"  + b.getNombreCopieBook()
+                + "',CategorieBook = '"  + b.getCategorieBook()
                 + "',NombreCopieBook = '"  + b.getNombreCopieBook()
                 + "',dateparution = '"  + b.getDateParution()
                 + "' where idBook = '" + b.getIdBook() + "';";
@@ -51,7 +56,7 @@ public class Requests {
     
     // ************************   LES REQUETES DES ADHERENTS   ************************* //
     public static String Adhenrent_all() {
-        return " select * from adherent where etatAdherent !=0  ;";  
+        return " select * from adherent where etatAdherent !=0 order by idAdherent DESC  ;";  
     }
 
     public static String Adh_CIN(String CIN) {
@@ -154,7 +159,7 @@ public class Requests {
     //  ************************  CONSULTATION DES STATUS DES ADHERENTS ************************//
     
     public static String Adherent_Attente() {
-        return " select * from adherent where etatAdherent = 0 ";
+        return " select * from adherent where etatAdherent = 0 order by idAdherent DESC";
     }
     
     public static String SelectCountAdherentAttente() {
@@ -190,15 +195,31 @@ public class Requests {
 
     }
     
+     public static String Reservation_All_Reservation(int id_adherent)
+    {
+        return "select R.idBook ,  B.titreBook, R.date , R.idAdherent , A.CIN , A.NomAdherent , A.PrenomAdherent from adherent A , book B , reservation R where R.IdAdherent = A.IdAdherent AND R.idBook = B.idBook AND R.IdAdherent ='"+id_adherent+"' Order By R.date DESC,A.nomAdherent ;";
+
+    }
+    
     
     public static String Reservation_Delete(ReservationP R)
     {
                return "delete from reservation where idBook = '" + R.getIdBook() + "' AND IdAdherent = '" + R.getIdAdherent() + "' AND Date like '%" + R.getDateReservation() + "%';";
     }
     
+     public static String Reservation_Delete(int id_adherent , int id_book)
+    {
+               return "delete from reservation where idBook = '" + id_book + "' AND IdAdherent = '" + id_adherent + "';";
+    }
+    
     public static String Reservation_Decrementation(int id_book)
     {
         return "update book set NombreCopieBook = NombreCopieBook - 1 where idBook = '"+ id_book + "';";
+    }
+    
+    public static String Reservation_Incrementation(int id_book)
+    {
+        return "update book set NombreCopieBook = NombreCopieBook + 1 where idBook = '"+ id_book + "';";
     }
     
     public static String SelectCountReservation() {

@@ -42,7 +42,7 @@ public class AdherentProcess extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private void sign_up(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void sign_up(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         
         Adherent adherent = new Adherent(
                 request.getParameter("CodeAdh"),
@@ -57,7 +57,8 @@ public class AdherentProcess extends HttpServlet {
         DAO.AdherentDAO.Adh_Add(adherent);
         HttpSession session = request.getSession(true);
         session.setAttribute("currentAdherent", adherent);
-        response.sendRedirect("EspaceAdherent.jsp");
+        request.setAttribute("iteration",adherent.getEtatAdherent());
+        request.getRequestDispatcher("EspaceAdherent.jsp").forward(request, response);            
     }
 
     private void sign_in(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -73,7 +74,7 @@ public class AdherentProcess extends HttpServlet {
             //response.sendRedirect("EspaceAdherent.jsp");
             HttpSession session = request.getSession(true);
             session.setAttribute("currentAdherent", adh);
-           
+           request.setAttribute("iteration",adh.getEtatAdherent());
             request.getRequestDispatcher("EspaceAdherent.jsp").forward(request, response);            
         } else 
         {
@@ -125,6 +126,7 @@ public class AdherentProcess extends HttpServlet {
                 );
             
             DAO.AdherentDAO.Update_ID(adh);
+            request.getSession().setAttribute("currentAdherent", adh);
             
                
         }
@@ -146,6 +148,13 @@ public class AdherentProcess extends HttpServlet {
             int etatAdherent = DAO.AdherentDAO.getEtat(id_adherent);
             System.out.println(etatAdherent); 
             response.getWriter().print(etatAdherent);
+        }
+        
+            if( process.equals("deconexion"))
+        {
+            if(  request.getSession(false) != null)
+            request.getSession().invalidate();
+            response.sendRedirect("indexAdherent.jsp");
         }
         
 

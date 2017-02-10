@@ -42,6 +42,15 @@ public class ReservationP {
         this.CIN = CIN;
         this.nomAdherent = nomAdherent;
     }
+
+    public ReservationP(int idBook, String nomBook, int idAdherent, String CIN, String nomAdherent, String prenomAdherent) {
+        this.idBook = idBook;
+        this.nomBook = nomBook;
+        this.idAdherent = idAdherent;
+        this.CIN = CIN;
+        this.nomAdherent = nomAdherent;
+        this.prenomAdherent = prenomAdherent;
+    }
     
     
 

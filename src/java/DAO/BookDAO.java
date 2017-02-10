@@ -84,6 +84,35 @@ public class BookDAO {
             return Books;
         }
     }
+        public static ArrayList getAll(int id_adherent) 
+        {
+        ArrayList<Book> Books = new ArrayList<Book>();
+        try {
+           
+            prStatement = Factory.ConnectionFactory.getConnection().prepareStatement(Requests.Book_Adherent(id_adherent));
+
+            ResultSet rs = prStatement.executeQuery();
+
+            while (rs.next()) {
+                Book b = new Book();
+                b.setIdBook(rs.getLong("idBook"));
+                b.setCodeBook(rs.getString("CodeBook"));
+                b.setTitreBook(rs.getString("titreBook"));
+                b.setAuteurBook(rs.getString("auteurBook"));
+                b.setCategorieBook(rs.getString("CategorieBook"));
+                b.setNombreCopieBook(rs.getInt("NombreCopieBook"));
+                b.setDateParution(rs.getString("DateParution"));
+              
+
+                Books.add(b);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            return Books;
+        }
+     }
     
     public static Book getBook(long id_book)
     {    Book b = new Book();

@@ -5,41 +5,16 @@ var exETAT ;
      audioElement = document.createElement('audio');
      audioElement.setAttribute('src', 'sounds/sumsumg.mp3');
      exETAT = $("#ETATADHERENT").val();
-<<<<<<< HEAD
-=======
      nomAdherent = $("#NOMADHERENT").val();
->>>>>>> c020b9a0646672aad1dca48c3fccc9f2b7d1a578
-     checkFirstState();
+     //checkFirstState(nomAdherent);
      audioElement.addEventListener("canplay",function(){  
      });   
      window.setInterval(function(){ 
          checkState();      
-    } , 3000); 
+    } , 5000); 
  });
  
- 
- /*function checkState()
- {
-    etat_adherent = etatAdherent();
-    
-                if(etat_adherent == 1);
-                
-                // SI L ADHERENT EST EN ATTENTE 
-                if(etat_adherent == 0)
-                {
-                   $(".normal").hide();
-                   $(".s").show();
-                   alert('EN ATTENTE');
-                }
-                //SI IL EST BLOQUE PAR L ADMIN
-                if(etat_adherent == 2)
-                {
-                   $(".normal").hide();
-                   $(".s").show();
-                   alert('BLOQUE');
-                }
- }
- */
+
 
  function checkState()
  {
@@ -56,17 +31,17 @@ var exETAT ;
                 if  (reponse !== exETAT)
                 {
                     exETAT = reponse;
-                    audioElement.play();  
                     if(reponse == 1)
                         {
-
+                           audioElement.play();
                            $(".normal").show();
                            $(".s").hide();
                         }
 
                         // SI L ADHERENT EST EN ATTENTE 
                     if(reponse == 0)
-                        {
+                        { 
+                           audioElement.play();
                            $(".normal").hide();
                            $(".ss").text('Bonjour '+nomAdherent+' : vous devez attendre l\'acceptation par l\'administrateur ');
                            $(".s").show();
@@ -76,7 +51,7 @@ var exETAT ;
                     if(reponse == 2)
                         {
                            $(".normal").hide();
-                           $(".ss").text('Bonjour '+ nomAdherent+ ' : Malheureusement vous êtes bloqué par l\'administrateur , Contactez le pour plus d\'information ');
+                           $(".ss").text('Bonjour '+ nomAdherent+ ' : Malheureusement vous etes bloque par l\'administrateur , Contactez le pour plus d\'information ');
                            $(".s").show();
                           // alert('BLOQUE');
                         }
@@ -97,7 +72,7 @@ var exETAT ;
             });
  }
  
- function checkFirstState()
+ function checkFirstState(nomAdherent)
  {
      exETAT = $("#ETATADHERENT").val();
    

@@ -23,8 +23,8 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
                 </button>
                 <a class="navbar-brand" href="EspaceAdherent.jsp">Accueil</a> 
             </div>
-    <div style="color: white;padding: 15px 50px 5px 50px;float: left;font-size: 22px;">Bienvenue, monsieur  <% if (request.getSession(false) == null ) response.sendRedirect("indexAdherent.jsp");   %><span style="color: red;"> <%=AD.getNomAdherent().toUpperCase() %></span> </div>  
-<div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> On est le <%=new Date().toString() %> &nbsp;<a href="identity?process=deconexion" class="btn btn-danger square-btn-adjust">Déconnexion</a> </div>
+    <div style="color: white;padding: 15px 50px 5px 50px;float: left;font-size: 22px;">Bienvenue, monsieur  <% if (request.getSession().getAttribute("currentAdherent") == null ) response.sendRedirect("indexAdherent.jsp");   %><span style="color: red;"> <%=AD.getNomAdherent().toUpperCase() %></span> </div>  
+<div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> On est le <%=new Date().toString() %> &nbsp;<a href="AdherentProcess?process=deconexion&id_adherent=1" class="btn btn-danger square-btn-adjust">Déconnexion</a> </div>
         </nav>
 <!-- ici c'est la fin de la barre du haut et commence la barre latÃ©rale (plus prÃ©cisemment l'image de profil  -->
 <nav class="navbar-default navbar-side" role="navigation">
@@ -43,7 +43,7 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
 </nav>
 
         
-        <input hidden id="ETATADHERENT" value="<%=AD.getEtatAdherent() %>" />
+            <input hidden id="ETATADHERENT" value="<%=DAO.AdherentDAO.Adh_Id(AD.getIdAdherent()).getEtatAdherent() %>" />
         <input hidden id="IDADHERENT" value="<%=AD.getIdAdherent()%>" />
          <input hidden id="NOMADHERENT" value="<%=AD.getNomAdherent() %>" />
 
@@ -74,4 +74,5 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
         </div>
                 <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
                 <script src="js/Listener.js" type="text/javascript"></script>
+                <script src="login_ressources/js/scripts.js"></script>
 

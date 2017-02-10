@@ -1,36 +1,24 @@
-<%@page import="DAO.EmpruntDAO"%>
-<%@page import="Beans.ReservationP"%>
 <%@page import="DAO.BookDAO"%>
 <%@page import="Beans.Book"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="Beans.Adherent"%>
 <html>
+<head>
+<%@include file="page_elements/header.jsp" %>
 
-    <head>
+   </head>
+<body>
+    <div id="wrapper">
+  
+        <%@include file="page_elements/navbarAdherent.jsp" %> 
         
-        <%@include file="page_elements/header.jsp" %>
-        
-        <link href="css/win.css" rel="stylesheet">
-
-        <style>
-
-
-
-        </style>
-
-    </head>
-    <body>
-        
-        <div id="wrapper">
-
-            <%@include file="page_elements/navbarAdherent.jsp" %> 
-
-            <!-- /. NAV SIDE  -->
-
-         
-            <div id="page-wrapper" >
-                  <% Adherent currentAdherent = (Adherent)request.getSession().getAttribute("currentAdherent"); %>
+      
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+           
+                
+            <% Adherent currentAdherent = (Adherent)request.getSession().getAttribute("currentAdherent"); %>
 
                  
                  
@@ -46,7 +34,7 @@
                     
                     <div class="panel-heading">
                         
-                      <h4 class="well_titre_2"> Liste des livres à remettre aujourd'hui</h4>
+                      <h4 class="well_titre_2"> Liste des livres</h4>
                       
                     
                         </div>
@@ -66,12 +54,13 @@
                                     <thead>
                                         <tr>
                                                            
-                                                        <th>|</th>
+                                                        <th></th>
                                                         <th>Titre du livre</th>
                                                         <th>Auteur du livre</th>
                                                         <th>Genre du livre</th>
                                                         <th>Date d'apparution</th>
                                                         <th>Nombre de copies disponibles</th>                                                            
+                                                        <th><center>Reserver un Livre</center></th>
                                                 
 
 
@@ -82,7 +71,7 @@
                                                     <!-- foreach (Livre L: Liste_Livres -->
                                                     
                                                        
-                                                    <%  LinkedList<Book> li = EmpruntDAO.getLivreAujourdui(currentAdherent.getIdAdherent());
+                                                    <%  ArrayList<Book> li = BookDAO.getAll(currentAdherent.getIdAdherent());
                                                        for ( Book bk : li ) {  %>  
                                                 <tr>
                                                       <td>
@@ -96,6 +85,17 @@
                                                             <td><%=bk.getCategorieBook() %></td>
                                                             <td><%=bk.getDateParution() %></td>
                                                             <td><%=bk.getNombreCopieBook() %></td>
+                                                            <td>
+                                                            <center>
+                                                            <%if(bk.getNombreCopieBook()==0){%>
+                                                               <input disabled type="button" class="Reservation btn btn-success" value="Reserver">
+                                                            <% }else{ %> 
+                                                                <a href="ReservationServlet?process=reserver&id_book=<%=bk.getIdBook()%>&id_adherent=<%=currentAdherent.getIdAdherent()%>" > 
+                                                                    <input  type="button" class="Reservation btn btn-success" value="Reserver">
+                                                                </a>
+                                                            <% } %>
+                                                            </center>
+                                                            </td>
                                                 </tr>
                                                 <% } %>
 
@@ -114,36 +114,58 @@
             </div
         </div>
     </div>
-       
-                    
-                    
-        
-      
-                    
-
-                    
-
-
-
-                </div>
-
-            </div>
-
-        </div>
-        <!-- /. PAGE INNER  -->
+               
     </div>
-    <!-- /. PAGE WRAPPER  -->
-    <!-- /. WRAPPER  -->
+</div>
+             <!-- /. PAGE INNER  -->
+          
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
+    
+    <% if ( request.getAttribute("iteration") != null ) {
+        int exETAT = (int) request.getAttribute("iteration");
+         if (exETAT == 0 ) { %> 
+    <script>
+ 
+     console.log(0);
+     nomAdherent = $("#NOMADHERENT").val();
 
-       <script src="assets/js/jquery-1.10.2.js"></script>
-    <!-- BOOTSTRAP SCRIPTS -->
-         <script src="assets/js/bootstrap.min.js"></script>
+                           $(".normal").hide();
+                           $(".ss").text('Bonjour '+nomAdherent+' : EN ATTENTE');
+                           $(".s").show();
+    </script>
+        <%  } if (exETAT == 2 ) { %>
+            <script>
+console.log(1);
+  nomAdherent = $("#NOMADHERENT").val();                       
+                           $(".normal").hide();
+                           $(".ss").text('Bonjour '+ nomAdherent+ ' : BLOQUE ');
+                           $(".s").show();
+                                     </script>
+                       <% } %>
+                
 
-         <!--script type="text/javascript" src="js/ttw-simple-notifications-min.js"></script>    
-         <script type="text/javascript" src="js/Notification.js"></script--> 
+    
+    
+    <% } %>
+    
+    <script src="assets/js/jquery-1.10.2.js"></script>
+   
+      <!-- BOOTSTRAP SCRIPTS -->
+      <script src="assets/js/bootstrap.min.js"></script>   
+    
+    <script src="js/jquery.bootpop.js" ></script>
+    <!-- METISMENU SCRIPTS -->
+    <!--script src="assets/js/jquery.metisMenu.js"></script-->
+     <!-- DATA TABLE SCRIPTS -->
+ 
+    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
 
-
+         <!-- CUSTOM SCRIPTS -->
+         <!--script src="assets/js/custom.js"></script-->
+         <script src="js/ControlAdherent.js" ></script>
+   
 </body>
 </html>

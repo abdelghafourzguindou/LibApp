@@ -15,6 +15,8 @@
    
         <!-- CUSTOM STYLES-->
         <link href="assets/css/custom.css" rel="stylesheet" />
+        <link href="css/win.css" rel="stylesheet" />
+
      <!-- GOOGLE FONTS-->
      <!-- TABLE STYLES-->
      <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
@@ -35,7 +37,7 @@
   top: 0px;
   right: 0px;
   width: 100%;
-  height: 100%;
+  height: 500%;
   opacity: 0.9;
   z-index: 50;
   display: none

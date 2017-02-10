@@ -101,10 +101,10 @@
 
 
         <!-- Javascript -->
-        <script src="login_ressources/js/jquery-1.11.1.min.js"></script>
+       <script src="login_ressources/js/jquery-1.11.1.min.js"></script>
         <script src="login_ressources/bootstrap/js/bootstrap.min.js"></script>
         <script src="login_ressources/js/jquery.backstretch.min.js"></script>
-        <script src="login_ressources/js/scripts.js"></script>
+                  <script src="login_ressources/js/scripts.js"></script>
 
         <!--[if lt IE 10]>
             <script src="login_ressources/js/placeholder.js"></script>

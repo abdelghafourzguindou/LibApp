@@ -41,7 +41,6 @@
                          btnAction : function(answer)
                          {  
                              $('.modal').modal('hide');
-                             delete_book(id_book);
                              
                          }
                      } 

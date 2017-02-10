@@ -28,7 +28,7 @@
                     <h4 class="well_titre">
                         <i class="glyphicon glyphicon-book"></i>
                         <span> Titre du Livre:</span><span class="mini_tabulation">
-                            <input class="form-control" name="titreBook"  > <!-- if(isset($_POST['titreBook'])) echo'value="'.$_POST['titreBook'].'" '-->
+                            <input class="form-control" name="titreBook"  >
                         </span><br/>
                     
                     <div class="row col-md-8">
@@ -37,22 +37,22 @@
                     
 
                     <br><span class="">Code du livre</span>
-                    <span class="mini_tabulation"><input class="form-control" name="codeBook"/><!-- if(isset($_POST['codeBook'])) echo'value="'.$_POST['codeBook'].'" ';-->
+                    <span class="mini_tabulation"><input class="form-control form-username" name="codeBook" id="form-username"/>
                     </span><br/>
 
                     <br><span class="">Nom de l'auteur</span>
-                    <span class="mini_tabulation"><input class="form-control" name="auteurBook"/><!-- if(isset($_POST['auteurBook'])) echo'value="'.$_POST['auteurBook'].'" ';-->
+                    <span class="mini_tabulation"><input class="form-control form-username" name="auteurBook" id="form-username"/>
                     </span><br/>
 
                     <br> <span class="">Catégorie du livre</span>
-                    <span class="mini_tabulation"><input class="form-control" name="categorieBook"/><!-- if(isset($_POST['categorieBook'])) echo'value="'.$_POST['categorieBook'].'" ';-->
+                    <span class="mini_tabulation"><input class="form-control form-username" name="categorieBook" id="form-username"/>
                     </span><br/>
                     
                     <br><span class="">Date de parution du livre</span>
-                    <span class="mini_tabulation"><input class="form-control"  type="date" name="date"/><!-- if(isset($_POST['dateParutionBook'])) echo'value="'.$_POST['dateParutionBook'].'" ';-->
+                    <span class="mini_tabulation"><input class="form-control form-username"  type="date" name="date" id="form-username"/>
                     </span><br/>
                     <br><span class="">Nombre de copies du livre</span>
-                    <span class="mini_tabulation"><input class="form-control" name="nombreCopieBook"/><!-- if(isset($_POST['nombreCopieBook'])) echo'value="'.$_POST['nombreCopieBook'].'" ';-->
+                    <span class="mini_tabulation"><input class="form-control form-username" name="nombreCopieBook" id="form-username"/>
                     </span><br/>
 
                     <br/><br/>
@@ -65,7 +65,7 @@
 
                     <br/><hr/><br/>
 
-                    <button class="btn btn-info btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button  class="btn btn-info btn-lg bouton col-lg-12 col-md-12 col-sm-12 col-xs-12" id="enrigistrer">
                     <span class="glyphicon glyphicon-floppy-disk icon_in_button" aria-hidden="true"></span>
                     </button> 
                  
@@ -91,18 +91,19 @@
              <!-- /. PAGE INNER  -->
             </div>
          <!-- /. PAGE WRAPPER  -->
-        </div>
+    
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-        <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
-      <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    
+ 
+       <script src="login_ressources/js/jquery-1.11.1.min.js"></script>
+                <!--script src="login_ressources/js/scripts.js"></script-->
 
-    <!-- METISMENU SCRIPTS -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
-      <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
+        <script src="login_ressources/bootstrap/js/bootstrap.min.js"></script>
+        <script src="login_ressources/js/jquery.backstretch.min.js"></script>
+
+    
     
    
 </body>

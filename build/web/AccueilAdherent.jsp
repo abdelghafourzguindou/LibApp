@@ -69,8 +69,6 @@
         </div>
         
         <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
-        <script src="js/Listener.js" type="text/javascript"></script>
-         <script type="text/javascript" src="js/ttw-simple-notifications-min.js"></script>    
-         <script type="text/javascript" src="js/Notification.js"></script>    
+         
     </body>    
 </html>

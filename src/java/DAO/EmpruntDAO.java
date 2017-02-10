@@ -70,8 +70,9 @@ public class EmpruntDAO {
          try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             st.executeUpdate(Requests.Emprunt_Book_Remis(id_adherent, id_book));
+            st.executeUpdate(Requests.Reservation_Incrementation(id_book));
             
-        } catch (Exception e) {
+            } catch (Exception e) {
             System.out.println(e.getMessage());
             
         }
@@ -153,7 +154,7 @@ public class EmpruntDAO {
                id_book = res.getInt(1);
                id_adherent = res.getInt(2);
                A = DAO.AdherentDAO.Adh_Id(id_adherent);
-               li.add( new ReservationP(id_book, BookDAO.getBook(id_book).getTitreBook(), id_adherent,  new String(A.getCIN()) , new String(A.getNomAdherent()) ));
+               li.add( new ReservationP(id_book, BookDAO.getBook(id_book).getTitreBook(), id_adherent,  new String(A.getCIN()) , new String(A.getNomAdherent()) , new String(A.getPrenomAdherent()) ));
                 
             }
         } catch (Exception e) {

@@ -43,19 +43,19 @@
                             </div>
                         </div>
                                     </a>
-                                    <a href="#">
+                                    <a href="LivreAujourdui.jsp">
                         <div class="col-md-3 col-sm-6 col-xs-6">           
                             <div class="panel panel-back noti-box">
                                 <span class="icon-box bg-color-blue set-icon">
                                     <i class="fa fa-bars"></i>
                                 </span>
                                 <div class="text-box" >
-                                    <p class="main-text">30 New</p>
-                                    <p class="text-muted">Notifications</p>
+                                    <p class="main-text"><%=DAO.EmpruntDAO.getLivreAujourdui().size() %> New</p>
+                                    <p class="text-muted">Livres a remettre</p>
                                 </div>
                             </div>
                         </div>
-                                    <a/>
+                                    </a>
                                     <a href="ReservationList.jsp">
                         <div class="col-md-3 col-sm-6 col-xs-6">           
                             <div class="panel panel-back noti-box">

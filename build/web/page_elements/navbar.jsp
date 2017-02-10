@@ -16,7 +16,7 @@ Cette page contient la barre du haut, dont on modifiera le nom pour chaque admin
                 </button>
                 <a class="navbar-brand" href="dashboard.jsp">
                     <i class="fa fa-bell-o"></i>
-                    <%=(DAO.AdherentDAO.selectCountAdherentEnAttente() + DAO.ReservationDAO.selectCountReservation())%> new
+                    <%=(DAO.AdherentDAO.selectCountAdherentEnAttente() + DAO.ReservationDAO.selectCountReservation() + DAO.EmpruntDAO.getLivreAujourdui().size())%> new
                 </a>
                 
             </div>

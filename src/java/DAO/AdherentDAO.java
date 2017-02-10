@@ -31,6 +31,7 @@ public class AdherentDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            
             return li_Adh;
 
         }
@@ -262,11 +263,15 @@ public class AdherentDAO {
         }
     }
         public static int getEtat(int id_adherent) {
+            int etat;
         try {
             Statement st = Factory.ConnectionFactory.getConnection().createStatement();
             ResultSet res = st.executeQuery(Requests.Adh_Etat(id_adherent));
             res.next();
-            return res.getInt(1);
+            etat = res.getInt(1);
+            res.close();
+            st.close();
+            return etat;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return -1;

@@ -14,7 +14,14 @@
 <!-- Balise d'Livre-->
 
 <li>
-    <a href="Livre_List_Adherent.jsp"><i class="glyphicon glyphicon-book"></i>Espace de livre<span class="fa arrow"></span></a>
+    <a href="EspaceAdherent.jsp"><i class="glyphicon glyphicon-book"></i>Espace de livre<span class="fa arrow"></span></a>
+</li>
+
+<li>
+    <a href="Livre_List_Adherent.jsp"><i class="glyphicon glyphicon-book"></i>Livre d'aujourd'hui<span class="fa arrow"></span></a>
+</li>
+<li>
+    <a href="ReservationList_Adherent.jsp"><i class="glyphicon glyphicon-book"></i>Annulation Reservation<span class="fa arrow"></span></a>
 </li>
 
 <!-- Balise d'emprunt-->

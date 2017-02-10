@@ -60,7 +60,7 @@ public class ReservationServlet extends HttpServlet {
                 id_adherent));
         // DECREMENTE NBRE RESERVATION 
         DAO.ReservationDAO.Decremente_Book_Reservation(id_book);
-        response.sendRedirect("Livre_List_Adherent.jsp");
+        response.sendRedirect("EspaceAdherent.jsp");
         }
          if ( process.equals("count"))
         {
@@ -71,6 +71,22 @@ public class ReservationServlet extends HttpServlet {
         
 
         }
+         if ( process.equals("annuler") )
+         {
+           String from = request.getParameter("from");
+           if(from.equals("adherent"))
+           {
+           DAO.ReservationDAO.deleteReservation(id_adherent,id_book);
+           DAO.ReservationDAO.Incrementation_Reservation(id_adherent, id_book);
+           response.sendRedirect("ReservationList_Adherent.jsp");
+           }
+           else
+           {
+           DAO.ReservationDAO.deleteReservation(id_adherent,id_book);
+           DAO.ReservationDAO.Incrementation_Reservation(id_adherent, id_book);
+           response.sendRedirect("ReservationList.jsp");
+           }
+         }
     }
 
    
